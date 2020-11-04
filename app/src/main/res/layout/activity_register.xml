@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg1"
+    tools:context=".RegisterActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/layout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp"
+            >
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="Fill the details to Sign Up in CarPoolTrial2"
+                android:textStyle="italic"
+                android:textFontWeight="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:onClick="goToLogin"
+                />
+
+
+
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Name"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textFontWeight="1"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_name"
+
+                />
+
+            <EditText
+                android:id="@+id/etName"
+                android:layout_width="280dp"
+                android:layout_height="35dp"
+                android:background="@drawable/custom_border"
+                android:inputType="textPersonName"
+                android:hint="  Enter your name"
+                android:ellipsize="end"
+                />
+
+            <TextView
+                android:id="@+id/txtMobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Mobile"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textFontWeight="1"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_phone"/>
+
+            <EditText
+                android:id="@+id/etNumber"
+                android:layout_width="280dp"
+                android:layout_height="35dp"
+                android:background="@drawable/custom_border"
+                android:inputType="number"
+                android:hint="  Enter your mobile number"
+                android:ellipsize="end"
+                />
+
+            <TextView
+                android:id="@+id/txtGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Select Gender"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textFontWeight="1"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_gender"/>
+
+            <RadioGroup
+                android:id="@+id/radioGrp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/radioMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male"/>
+
+                <RadioButton
+                    android:id="@+id/radioFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Female"/>
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/txtMail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Mail ID"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textFontWeight="1"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_mail"
+                />
+
+
+            <EditText
+                android:id="@+id/etMail"
+                android:layout_width="280dp"
+                android:layout_height="35dp"
+                android:background="@drawable/custom_border"
+                android:inputType="textEmailAddress"
+                android:hint="  Enter your mail"
+                android:ellipsize="end"
+                />
+
+
+            <TextView
+                android:id="@+id/txtPass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:layout_marginTop="10dp"
+
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textFontWeight="1"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_pswd"/>
+
+            <EditText
+                android:id="@+id/etPs"
+                android:layout_width="280dp"
+                android:layout_height="35dp"
+                android:background="@drawable/custom_border"
+                android:inputType="textPassword"
+                android:hint="  Enter your password"
+                android:ellipsize="end"
+                />
+
+
+
+            <TextView
+                android:id="@+id/txtPassConfirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Confirm Password"
+                android:layout_marginTop="10dp"
+
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textFontWeight="1"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_pswd"/>
+
+            <EditText
+                android:id="@+id/etPs2"
+                android:layout_width="280dp"
+                android:layout_height="35dp"
+                android:background="@drawable/custom_border"
+                android:inputType="textPassword"
+                android:hint=" Confirm your password"
+                android:ellipsize="end"
+                />
+
+            <Button
+                android:id="@+id/btnSignin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_gravity="center"
+                android:text="Register"
+                android:elevation="10dp"
+                android:tooltipText="Click to Register"
+                />
+
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:clickable="true"
+                android:text="Already have an account?\n Tap to login"
+                android:textStyle="italic"
+                android:textFontWeight="1"
+                android:textSize="15sp"
+                android:onClick="goToLogin"
+                />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+</LinearLayout>

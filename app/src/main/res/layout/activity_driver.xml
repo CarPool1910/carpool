@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg1"
+    tools:context=".Driver">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/layout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="Driver Details"
+                android:textStyle="italic"
+                android:textFontWeight="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/driverNameTV"
+                    android:layout_width="280dp"
+                    android:layout_height="35dp"
+                    android:hint="Name"
+                    android:background="@drawable/custom_border"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:layout_marginTop="10dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/driverMobileTV"
+                    android:layout_width="280dp"
+                    android:layout_height="35dp"
+                    android:hint="Mobile No"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:background="@drawable/custom_border"
+                    android:layout_marginTop="10dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <TextView
+                android:id="@+id/txtSrc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Source"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textFontWeight="1"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_name"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etSrc"
+                android:layout_width="280dp"
+                android:layout_height="35dp"
+                android:background="@drawable/custom_border"
+                android:inputType="text"
+                android:hint="  Enter your source"
+                android:ellipsize="end"
+                />
+
+                <ImageView
+                    android:id="@+id/addStop"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/ic_addstop"
+                    android:layout_weight="1"
+                    />
+
+
+
+            </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/stop1Layout"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/stop1"
+                    android:layout_width="280dp"
+                    android:layout_height="35dp"
+                    android:hint="Add Stop"
+                    android:layout_margin="5dp"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:background="@drawable/custom_border"
+                    android:layout_marginTop="10dp"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/addStop1"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="11dp"
+                android:src="@drawable/ic_addstop"
+                android:layout_weight="1"
+                />
+
+        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/stop2Layout"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/stop2"
+                        android:layout_width="280dp"
+                        android:layout_height="35dp"
+                        android:hint="Add Stop"
+                        android:layout_margin="5dp"
+
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:background="@drawable/custom_border"
+                        android:layout_marginTop="10dp"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/addStop2"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="11dp"
+                    android:src="@drawable/ic_addstop"
+                    android:layout_weight="1"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/stop3Layout"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/stop3"
+                        android:layout_width="280dp"
+                        android:layout_height="35dp"
+                        android:hint="Add Stop"
+                        android:inputType="text"
+                        android:layout_margin="5dp"
+
+                        android:maxLines="1"
+                        android:background="@drawable/custom_border"
+                        android:layout_marginTop="10dp"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/addStop3"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="11dp"
+                    android:src="@drawable/ic_addstop"
+                    android:layout_weight="1"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/stop4Layout"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/stop4"
+                        android:layout_width="280dp"
+                        android:layout_height="35dp"
+                        android:hint="Add Stop"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/custom_border"
+                        android:layout_marginTop="10dp"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            </LinearLayout>
+
+
+
+
+            <TextView
+                android:id="@+id/txtDest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Destination"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textFontWeight="1"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_phone"/>
+
+            <EditText
+                android:id="@+id/etDest"
+                android:layout_width="280dp"
+                android:layout_height="35dp"
+                android:background="@drawable/custom_border"
+                android:inputType="text"
+                android:hint="  Enter your destinationn"
+                android:ellipsize="end"
+                />
+
+            <TextView
+                android:id="@+id/txtVehicler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Vehicle Type"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textFontWeight="1"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_gender"/>
+
+            <RadioGroup
+                android:id="@+id/radioGrp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/radioBike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bike"/>
+
+                <RadioButton
+                    android:id="@+id/radioCar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Car"/>
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/txtPassenger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Expected no of Passengers"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textFontWeight="1"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_mail"
+                />
+
+
+<!--            <Spinner-->
+<!--                android:id="@+id/passengerSpinner"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:visibility="gone"-->
+<!--                android:background="@drawable/custom_border"/>-->
+
+            <EditText
+                android:id="@+id/etPassenger"
+                android:layout_width="280dp"
+                android:layout_height="35dp"
+                android:background="@drawable/custom_border"
+                android:inputType="number"
+                android:hint="  Enter passenger no"
+                android:text="1"
+                android:ellipsize="end"
+               android:visibility="gone"
+                />
+
+
+            <TextView
+                android:id="@+id/txtFare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fare"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textFontWeight="1"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_pswd"/>
+
+            <EditText
+                android:id="@+id/etFare"
+                android:layout_width="280dp"
+                android:layout_height="35dp"
+                android:background="@drawable/custom_border"
+                android:inputType="number"
+                android:hint="  Enter your expected fare"
+                android:ellipsize="end"
+                />
+
+            <Button
+                android:id="@+id/btnSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_gravity="center"
+                android:text="Save and Search Passenger"
+                android:elevation="10dp"
+                android:tooltipText="Click to Search"/>
+
+
+
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+</LinearLayout>
