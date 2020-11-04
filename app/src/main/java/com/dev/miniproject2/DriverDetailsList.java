@@ -3,15 +3,19 @@ package com.dev.miniproject2;
 public class DriverDetailsList {
 
 
-    String Mobile,Name,Source,Destination,Fare;
+    String Mobile,Name,Source,Destination,Fare, Stop1, Stop2, Stop3, Stop4;
 
 
-    public DriverDetailsList(String mobile,String name,String source, String destination,String fare) {
+    public DriverDetailsList(String mobile, String name, String source, String stop1, String stop2, String stop3, String stop4, String destination, String fare) {
         Mobile=mobile;
         Name=name;
         Source = source;
         Destination = destination;
         Fare = fare;
+        Stop1 = stop1;
+        Stop2 = stop2;
+        Stop3 = stop3;
+        Stop4 = stop4;
     }
 
     public DriverDetailsList() {
@@ -52,5 +56,39 @@ public class DriverDetailsList {
     public void setFare(String fare) {
         Fare = fare;
     }
+
+
+    public String getStop1() {
+        return Stop1;
+    }
+
+    public void setStop1(String stop1) {
+        Stop1 = stop1;
+    }
+
+    public String getStop2() {
+        return Stop2;
+    }
+
+    public void setStop2(String stop2) {
+        Stop2 = stop2;
+    }
+
+    public String getStop3() {
+        return Stop3;
+    }
+
+    public void setStop3(String stop3) {
+        Stop3 = stop3;
+    }
+
+    public String getStop4() {
+        return Stop4;
+    }
+
+    public void setStop4(String stop4) {
+        Stop4 = stop4;
+    }
+
 
 }

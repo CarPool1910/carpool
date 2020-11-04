@@ -93,12 +93,10 @@ public class MainActivity extends AppCompatActivity {
         etMail = (EditText) findViewById(R.id.etMail);
 
 
-
-        if(!user.isEmailVerified()){
+        if (!user.isEmailVerified()) {
             tempLayout.setVisibility(View.VISIBLE);
             scrollView.setVisibility(View.GONE);
-        }
-        else{
+        } else {
             scrollView.setVisibility(View.VISIBLE);
             tempLayout.setVisibility(View.GONE);
         }
@@ -110,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
     public void showData() {
 
         DocumentReference dr = firestore.collection("users").document(userID);
-        dr.addSnapshotListener(MainActivity.this, new EventListener<DocumentSnapshot>() {
+        dr.addSnapshotListener(MainActivity.this,  new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
@@ -139,9 +137,8 @@ public class MainActivity extends AppCompatActivity {
                             Picasso.get().load(uri).into(imageView);
                         }
                     });
-                }
-                catch (Exception e){
-                    Log.d("Exception","Profile Pic Exception"+e.getMessage());
+                } catch (Exception e) {
+                    Log.d("Exception", "Profile Pic Exception" + e.getMessage());
                 }
             }
         });
@@ -243,9 +240,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Error in uploading profile picture", Toast.LENGTH_SHORT).show();
                 }
             });
-        }
-        catch (Exception e){
-            Log.d("Exception","Profile Pic Exception"+e.getMessage());
+        } catch (Exception e) {
+            Log.d("Exception", "Profile Pic Exception" + e.getMessage());
         }
     }
 
