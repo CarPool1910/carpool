@@ -157,38 +157,36 @@ public class Driver extends AppCompatActivity {
                 passengers = e3.getText().toString();
                 fare = e4.getText().toString();
 
+
                 //Taking input from stops
-                if(inputStop1.getText().length()!=0){
+                //stop1
+                if (inputStop1.getText().length() != 0) {
                     stop1 = inputStop1.getText().toString();
+                } else {
+                    stop1 = "";
                 }
-                if(inputStop2.getText().length()!=0){
-                    stop2 = inputStop1.getText().toString();
+                //stop2
+                if (inputStop2.getText().length() != 0) {
+                    stop2 = inputStop2.getText().toString();
+                } else {
+                    stop2 = "";
                 }
-                if(inputStop3.getText().length()!=0){
-                    stop3 = inputStop1.getText().toString();
+                //stop3
+                if (inputStop3.getText().length() != 0) {
+                    stop3 = inputStop3.getText().toString();
+                } else {
+                    stop3 = "";
                 }
-                if(inputStop4.getText().length()!=0){
-                    stop4 = inputStop1.getText().toString();
+                //stop4
+                if (inputStop4.getText().length() != 0) {
+                    stop4 = inputStop4.getText().toString();
+                } else {
+                    stop4 = "";
                 }
 
 
                 RadioButton vehiclebtn = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
                 vehicle = vehiclebtn.getText().toString();
-
-
-//                        s1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//                            @Override
-//                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                            String  no = adapterView.getItemAtPosition(i).toString();
-//                            Toast.makeText(Driver.this, "passenger="+no, Toast.LENGTH_SHORT).show();
-//                            passengers=no;
-//                            }
-//
-//                            @Override
-//                            public void onNothingSelected(AdapterView<?> adapterView) {
-//                                Log.d("Spinner", "On Nothing selected");
-//                            }
-//                        });
 
 
                 radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -280,11 +278,3 @@ public class Driver extends AppCompatActivity {
 
 
 }
-
-//    public void searchPassenger(View view) {
-//        Toast.makeText(this, "Search Passenger", Toast.LENGTH_SHORT).show();
-//    }
-//
-//    public void saveDetails(View view) {
-//        Toast.makeText(this, "Save Details", Toast.LENGTH_SHORT).show();
-//    }
