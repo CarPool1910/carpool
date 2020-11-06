@@ -79,15 +79,15 @@ public class DriverDetails extends AppCompatActivity {
             @NonNull
             @Override
             public DriverViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-
-
+                // Log.d("COUNT", "onCreateViewHolder: "+viewType);
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.driverlist1, parent, false);
                 return new DriverViewHolder(view);
             }
 
             @Override
             protected void onBindViewHolder(@NonNull DriverViewHolder holder, int position, @NonNull final DriverDetailsList model) {
+                Log.d("COUNT", "onCreateViewHolder: " + position);
+
 
                 if (passengerSource.equalsIgnoreCase(model.getSource()) || passengerSource.equalsIgnoreCase(model.getStop1()) || passengerSource.equalsIgnoreCase(model.getStop2()) || passengerSource.equals(model.getStop3())
                         || passengerSource.equalsIgnoreCase(model.getStop4()) || passengerSource.equalsIgnoreCase(model.getDestination())) {
@@ -95,6 +95,7 @@ public class DriverDetails extends AppCompatActivity {
                             || passengerDest.equalsIgnoreCase(model.getStop4()) || passengerDest.equalsIgnoreCase(model.getDestination())) {
 
                         holder.cardView.setVisibility(View.VISIBLE);
+
                         Log.d("Passenger", "onBindViewHolder: " + passengerSource + passengerDest);
 
                         holder.Dname.setText("Name:" + model.getName());
@@ -120,40 +121,15 @@ public class DriverDetails extends AppCompatActivity {
                             }
                         });
                     }
-                }
-                else {
+                } else {
                     holder.cardView.setVisibility(View.GONE);
-                   holder.noDrivers.setVisibility(View.VISIBLE);
+                    if (position == 0) {
+                        holder.noDrivers.setVisibility(View.VISIBLE);
+                    }
+
                 }
-
-
-
-
-//                holder.Dname.setText("Name:" + Drivername);
-//                holder.Dname.setText("Name:"+model.getName());
-//                holder.Dsource.setText("Source:" + model.getSource());
-//                holder.Ddestination.setText("Destination:" + model.getDestination());
-//                holder.Dfare.setText("Fare:" + model.getFare());
-//                holder.Dstop1.setText("Stop 1: "+model.getStop1());
-//                holder.Dstop2.setText("Stop 2: "+model.getStop2());
-//                holder.Dstop3.setText("Stop 3: "+model.getStop3());
-//                holder.Dstop4.setText("Stop 4: "+model.getStop4());
-
-                //Call Onclick
-//                holder.Dcall.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        Intent i = new Intent(Intent.ACTION_CALL);
-//                        i.setData(Uri.parse("tel:"+model.getMobile()));
-//                        if (ActivityCompat.checkSelfPermission(DriverDetails.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-//                            Toast.makeText(DriverDetails.this, "Please Grant the Permission", Toast.LENGTH_SHORT).show();
-//                            requestPermission();
-//                        } else {
-//                            startActivity(i);
-//                        }
-//                    }
-//                });
             }
+
         };
 
         driverRV.setHasFixedSize(true);
@@ -161,6 +137,7 @@ public class DriverDetails extends AppCompatActivity {
         driverRV.setAdapter(adapter);
 
     }
+
 
     public class DriverViewHolder extends RecyclerView.ViewHolder {
         TextView Dname, Dsource, Ddestination, Dfare, Dstop1, Dstop2, Dstop3, Dstop4, noDrivers;
@@ -182,20 +159,6 @@ public class DriverDetails extends AppCompatActivity {
             cardView = itemView.findViewById(R.id.cardView);
             noDrivers = itemView.findViewById(R.id.noDriversText);
 
-
-//            Dcall.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent i = new Intent(Intent.ACTION_CALL);
-//                    i.setData(Uri.parse("tel:"+MobileNo));
-//                    if (ActivityCompat.checkSelfPermission(DriverDetails.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-//                        Toast.makeText(DriverDetails.this, "Please Grant the Permission", Toast.LENGTH_SHORT).show();
-//                        requestPermission();
-//                    } else {
-//                        startActivity(i);
-//                    }
-//                }
-//            });
         }
     }
 
