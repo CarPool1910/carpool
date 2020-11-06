@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="CarPool">
+
+        <menu android:checkableBehavior="single">
+
+            <item android:id="@+id/idHome"
+                android:title="Home"/>
+
+            <item android:id="@+id/idProfile"
+                android:title="Profile"/>
+
+            <item android:id="@+id/idGetPool"
+                android:title="Get Pool"/>
+
+            <item android:id="@+id/idDrivePool"
+                android:title="Drive Pool"/>
+
+
+        </menu>
+    </item>
+    <item android:title="About">
+        <menu>
+
+            <item android:id="@+id/idContact"
+                android:title="Contact Us"/>
+
+            <item
+                android:id="@+id/idAbout"
+                android:title="About Us"/>
+
+        </menu>
+    </item>
+
+    <item android:title="More">
+        <menu>
+            <item android:id="@+id/idShare"
+                android:icon="@drawable/ic_share"
+                android:title="Share" />
+
+            <item android:id="@+id/idSettings"
+                android:icon="@drawable/ic_settings"
+                android:title="Settings" />
+
+            <item android:id="@+id/idLogOut"
+                android:title="Log Out"
+                android:icon="@drawable/ic_logout"
+                />
+
+
+
+        </menu>
+
+    </item>
+
+</menu>

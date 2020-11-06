@@ -36,7 +36,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-public class MainActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
     Button logout, update, tempBtn;
     FirebaseAuth auth;
     StorageReference storage;
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_profile);
 
         //---------------------------------------------cast----------------------------------------------//          --------  Buttons  --------
 //          --------  ImageView  --------
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
     public void showData() {
 
         DocumentReference dr = firestore.collection("users").document(userID);
-        dr.addSnapshotListener(MainActivity.this,  new EventListener<DocumentSnapshot>() {
+        dr.addSnapshotListener(ProfileActivity.this,  new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
     public void logOut(View view) {
         auth.signOut();
         if (auth.getCurrentUser() == null) {
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
             finish();
         }
     }
@@ -171,17 +171,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 String newPswd = resetPass.getText().toString();
                 if (newPswd.length() < 6) {
-                    Toast.makeText(MainActivity.this, "Password should be at least 6 characters", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProfileActivity.this, "Password should be at least 6 characters", Toast.LENGTH_SHORT).show();
                 }
                 user.updatePassword(newPswd).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(MainActivity.this, "Password changed  successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProfileActivity.this, "Password changed  successfully", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(MainActivity.this, "Password not changed, " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProfileActivity.this, "Password not changed, " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -225,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
             fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(MainActivity.this, "Profile Picture Uploaded", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProfileActivity.this, "Profile Picture Uploaded", Toast.LENGTH_SHORT).show();
                     fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
@@ -237,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(MainActivity.this, "Error in uploading profile picture", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProfileActivity.this, "Error in uploading profile picture", Toast.LENGTH_SHORT).show();
                 }
             });
         } catch (Exception e) {
@@ -250,12 +250,12 @@ public class MainActivity extends AppCompatActivity {
         user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(MainActivity.this, "Verification link is sent to your email address, click on the link to verify", Toast.LENGTH_LONG).show();
+                Toast.makeText(ProfileActivity.this, "Verification link is sent to your email address, click on the link to verify", Toast.LENGTH_LONG).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(MainActivity.this, "Error in sending email..", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ProfileActivity.this, "Error in sending email..", Toast.LENGTH_SHORT).show();
             }
         });
     }

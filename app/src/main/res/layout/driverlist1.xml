@@ -10,44 +10,75 @@
     android:paddingBottom="10dp"
     android:clipToPadding="false">
 
+<TextView
+    android:id="@+id/noDriversText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="No Drivers available currently :("
+    android:textSize="30sp"
+    android:layout_weight="2"
+    android:textStyle="bold"
+    android:layout_gravity="center_horizontal"
+    android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+    android:visibility="gone"/>
+
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardUseCompatPadding="true"
         app:cardElevation="4dp"
+        android:elevation="20dp"
+        android:background="@drawable/custom_border"
         app:cardCornerRadius="3dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:elevation="30dp">
+            android:padding="10dp"
+            >
 
             <TextView
                 android:id="@+id/nameTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:text="Name"
+                android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
+
 
 
             <TextView
                 android:id="@+id/sourceTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:text="Source"
                 android:layout_marginTop="10dp"
                 android:textSize="18sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/destinationTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Destination"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textStyle="bold"/>
+
 
             <TextView
                 android:id="@+id/stop1Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:text="Stop 1"
                 android:layout_marginTop="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -55,8 +86,9 @@
                 android:id="@+id/stop2Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:text="Stop 2"
                 android:layout_marginTop="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -64,8 +96,9 @@
                 android:id="@+id/stop3Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:text="Stop 3"
                 android:layout_marginTop="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -73,38 +106,34 @@
                 android:id="@+id/stop4Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:text="Stop 4"
                 android:layout_marginTop="10dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
 
 
-            <TextView
-            android:id="@+id/destinationTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:layout_marginTop="10dp"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
-
         <TextView
             android:id="@+id/fareTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:layout_marginTop="10dp"
-            android:textSize="18sp"
+            android:text="Fare"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textStyle="bold"/>
 
+                <ImageView
+                    android:id="@+id/callButton"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_call"
+                    android:layout_marginTop="10dp"
+                    />
 
-            <Button
-                android:id="@+id/callButton"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:text="Call"/>
+
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

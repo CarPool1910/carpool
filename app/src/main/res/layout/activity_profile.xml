@@ -6,7 +6,7 @@
     android:background="#f7594d"
     android:layout_height="match_parent"
 
-    tools:context=".MainActivity">
+    tools:context=".ProfileActivity">
 
     <LinearLayout
         android:id="@+id/tempLayout"
