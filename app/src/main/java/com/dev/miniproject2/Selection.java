@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Selection extends AppCompatActivity {
 
@@ -27,6 +28,7 @@ public class Selection extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,8 @@ public class Selection extends AppCompatActivity {
 
         t1 = findViewById(R.id.getPoolText);
         t2 = findViewById(R.id.drivePoolText);
+
+        auth = FirebaseAuth.getInstance();
 
         navigationView = findViewById(R.id.navigationDrawer);
         drawerLayout = findViewById(R.id.drawerLayout);
@@ -111,6 +115,13 @@ public class Selection extends AppCompatActivity {
                     case R.id.idSettings:
                         Toast.makeText(Selection.this, "Settings are not yet finalised", Toast.LENGTH_SHORT).show();
                         break;
+                    case R.id.idLogOut:
+                        auth.signOut();
+                        if (auth.getCurrentUser() == null) {
+                            startActivity(new Intent(Selection.this, LoginActivity.class));
+                            finish();
+                        }
+
                 }
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;

@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
 
 //          --------  TextViews  --------
         txtMail = findViewById(R.id.txtMail);
-        txtPs = findViewById(R.id.txtPass);
+
         txt1 = findViewById(R.id.text1);
         txt2 = findViewById(R.id.text2);
         txt3 = findViewById(R.id.text3);
@@ -136,5 +136,11 @@ public class LoginActivity extends AppCompatActivity {
         });
         dialog.create().show();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

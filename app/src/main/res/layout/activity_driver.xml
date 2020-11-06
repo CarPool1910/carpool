@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/bg1"
     tools:context=".Driver">
 
     <ScrollView
@@ -44,10 +43,9 @@
                     android:layout_width="280dp"
                     android:layout_height="35dp"
                     android:hint="Name"
-                    android:background="@drawable/custom_border"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_margin="10dp"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -61,46 +59,36 @@
                     android:hint="Mobile No"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:background="@drawable/custom_border"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_margin="10dp"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-
-
-            <TextView
-                android:id="@+id/txtSrc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" Source"
-                android:layout_marginTop="10dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textFontWeight="1"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:drawableLeft="@drawable/ic_name"
-
-                />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/etSrc"
-                android:layout_width="280dp"
-                android:layout_height="35dp"
-                android:background="@drawable/custom_border"
-                android:inputType="text"
-                android:hint="  Enter your source"
-                android:ellipsize="end"
-                />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSrc"
+                        android:layout_width="280dp"
+                        android:layout_height="35dp"
+                        android:hint="Source"
+                        android:layout_gravity="center"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:layout_margin="10dp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <ImageView
                     android:id="@+id/addStop"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
                     android:src="@drawable/ic_addstop"
                     android:layout_weight="1"
                     />
@@ -112,7 +100,7 @@
 
         <LinearLayout
             android:id="@+id/stop1Layout"
-            android:visibility="gone"
+            android:visibility="visible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -126,11 +114,9 @@
                     android:layout_width="280dp"
                     android:layout_height="35dp"
                     android:hint="Add Stop"
-                    android:layout_margin="5dp"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:background="@drawable/custom_border"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_margin="10dp"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -146,7 +132,7 @@
         </LinearLayout>
             <LinearLayout
                 android:id="@+id/stop2Layout"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -160,12 +146,10 @@
                         android:layout_width="280dp"
                         android:layout_height="35dp"
                         android:hint="Add Stop"
-                        android:layout_margin="5dp"
 
                         android:inputType="text"
                         android:maxLines="1"
-                        android:background="@drawable/custom_border"
-                        android:layout_marginTop="10dp"/>
+                        android:layout_margin="10dp"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -182,7 +166,7 @@
 
             <LinearLayout
                 android:id="@+id/stop3Layout"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -197,11 +181,9 @@
                         android:layout_height="35dp"
                         android:hint="Add Stop"
                         android:inputType="text"
-                        android:layout_margin="5dp"
 
                         android:maxLines="1"
-                        android:background="@drawable/custom_border"
-                        android:layout_marginTop="10dp"/>
+                        android:layout_margin="10dp"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -219,7 +201,7 @@
 
             <LinearLayout
                 android:id="@+id/stop4Layout"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -235,9 +217,7 @@
                         android:hint="Add Stop"
                         android:inputType="text"
                         android:maxLines="1"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/custom_border"
-                        android:layout_marginTop="10dp"/>
+                        android:layout_margin="10dp"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -247,28 +227,19 @@
 
 
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/txtDest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" Destination"
-                android:layout_marginTop="10dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textFontWeight="1"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:drawableLeft="@drawable/ic_phone"/>
-
-            <EditText
-                android:id="@+id/etDest"
-                android:layout_width="280dp"
-                android:layout_height="35dp"
-                android:background="@drawable/custom_border"
-                android:inputType="text"
-                android:hint="  Enter your destinationn"
-                android:ellipsize="end"
-                />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etDest"
+                    android:layout_width="280dp"
+                    android:layout_height="35dp"
+                    android:hint="Destination"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:layout_margin="10dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/txtVehicler"
@@ -336,36 +307,29 @@
                 />
 
 
-            <TextView
-                android:id="@+id/txtFare"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fare"
-                android:layout_marginTop="10dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textFontWeight="1"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:drawableLeft="@drawable/ic_pswd"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/etFare"
-                android:layout_width="280dp"
-                android:layout_height="35dp"
-                android:background="@drawable/custom_border"
-                android:inputType="number"
-                android:hint="  Enter your expected fare"
-                android:ellipsize="end"
-                />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etFare"
+                    android:layout_width="280dp"
+                    android:layout_height="35dp"
+                    android:hint="Fare"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:layout_margin="10dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/btnSearch"
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:layout_gravity="center"
                 android:text="Save and Search Passenger"
                 android:elevation="10dp"
+                android:background="@drawable/custom_border2"
                 android:tooltipText="Click to Search"/>
 
 

@@ -52,8 +52,6 @@ public class RegisterActivity extends AppCompatActivity {
         txtName = findViewById(R.id.txtName);
         txtNumber = findViewById(R.id.txtMobile);
         txtMail = findViewById(R.id.txtMail);
-        txtPs = findViewById(R.id.txtPass);
-        txtPs2 = findViewById(R.id.txtPassConfirm);
         txt1 = findViewById(R.id.text1);
         txt2 = findViewById(R.id.text2);
 
@@ -184,6 +182,12 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void goToLogin(View view) {
         startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
         finish();
     }
 }

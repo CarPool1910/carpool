@@ -77,11 +77,8 @@ public class Driver extends AppCompatActivity {
         imgStop3 = findViewById(R.id.addStop3);
 
         t1 = findViewById(R.id.text1);
-        t2 = findViewById(R.id.txtSrc);
-        t3 = findViewById(R.id.txtDest);
         t4 = findViewById(R.id.txtVehicler);
         t5 = findViewById(R.id.txtPassenger);
-        t6 = findViewById(R.id.txtFare);
 
         e1 = findViewById(R.id.etSrc);
         e2 = findViewById(R.id.etDest);
@@ -96,31 +93,9 @@ public class Driver extends AppCompatActivity {
 
         btnSearch = findViewById(R.id.btnSearch);
 
-//        final String passenger[] = {"1", "2", "3"};
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, passenger);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        s1.setAdapter(adapter);
-
 
         auth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-
-        if (TextUtils.isEmpty(name)) {
-            te1.setError("Please enter Name");
-        }
-
-        if (TextUtils.isEmpty(mobile)) {
-            te2.setError("Please enter mobile No");
-        }
-
-        if (TextUtils.isEmpty(source)) {
-            e1.setError("Please Enter Source");
-            btnSearch.setEnabled(false);
-        }
-        if (TextUtils.isEmpty(destination)) {
-            e2.setError("Please Enter Destination");
-        }
-
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -138,19 +113,32 @@ public class Driver extends AppCompatActivity {
             }
         });
 
-        if (TextUtils.isEmpty(passengers)) {
-            e3.setError("Please Enter Valid Number of Passengers");
-        }
-        if (TextUtils.isEmpty(fare)) {
-            e4.setError("Please Enter the Fare");
-        }
-
 
         btnSearch.setEnabled(true);
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if (TextUtils.isEmpty(name)) {
+                    te1.setError("Please enter Name");
+                }
+                if (TextUtils.isEmpty(mobile)) {
+                    te2.setError("Please enter mobile No");
+                }
+                if (TextUtils.isEmpty(source)) {
+                    e1.setError("Please Enter Source");
+                }
+                if (TextUtils.isEmpty(destination)) {
+                    e2.setError("Please Enter Destination");
+                }
+                if (TextUtils.isEmpty(passengers)) {
+                    e3.setError("Please Enter Valid Number of Passengers");
+                }
+                if (TextUtils.isEmpty(fare)) {
+                    e4.setError("Please Enter the Fare");
+                }
+
                 name = te1.getText().toString();
                 mobile = te2.getText().toString();
                 source = e1.getText().toString();
