@@ -12,6 +12,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.net.http.SslCertificate;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -78,6 +79,9 @@ public class DriverDetails extends AppCompatActivity {
             @NonNull
             @Override
             public DriverViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+
+
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.driverlist1, parent, false);
                 return new DriverViewHolder(view);
             }
@@ -85,12 +89,12 @@ public class DriverDetails extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull DriverViewHolder holder, int position, @NonNull final DriverDetailsList model) {
 
-
                 if (passengerSource.equalsIgnoreCase(model.getSource()) || passengerSource.equalsIgnoreCase(model.getStop1()) || passengerSource.equalsIgnoreCase(model.getStop2()) || passengerSource.equals(model.getStop3())
                         || passengerSource.equalsIgnoreCase(model.getStop4()) || passengerSource.equalsIgnoreCase(model.getDestination())) {
                     if (passengerDest.equalsIgnoreCase(model.getStop1()) || passengerDest.equalsIgnoreCase(model.getStop2()) || passengerDest.equalsIgnoreCase(model.getStop3())
                             || passengerDest.equalsIgnoreCase(model.getStop4()) || passengerDest.equalsIgnoreCase(model.getDestination())) {
 
+                        holder.cardView.setVisibility(View.VISIBLE);
                         Log.d("Passenger", "onBindViewHolder: " + passengerSource + passengerDest);
 
                         holder.Dname.setText("Name:" + model.getName());
@@ -116,10 +120,14 @@ public class DriverDetails extends AppCompatActivity {
                             }
                         });
                     }
-                } else {
-                    holder.cardView.setVisibility(View.GONE);
-                 //   holder.noDrivers.setVisibility(View.VISIBLE);
                 }
+                else {
+                    holder.cardView.setVisibility(View.GONE);
+                   holder.noDrivers.setVisibility(View.VISIBLE);
+                }
+
+
+
 
 //                holder.Dname.setText("Name:" + Drivername);
 //                holder.Dname.setText("Name:"+model.getName());

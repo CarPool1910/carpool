@@ -3,6 +3,7 @@ package com.dev.miniproject2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -276,5 +277,10 @@ public class Driver extends AppCompatActivity {
 
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(Driver.this, Selection.class));
+        finish();
+    }
 }

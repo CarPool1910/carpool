@@ -134,6 +134,13 @@ public class Passenger extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(Passenger.this, Selection.class));
+        finish();
+    }
+
 //    public void driverOptions(View view) {
 //        Toast.makeText(getApplicationContext(),"Driver Spotted",Toast.LENGTH_SHORT).show();
 //    }

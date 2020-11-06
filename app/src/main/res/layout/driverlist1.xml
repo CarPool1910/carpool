@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         app:cardUseCompatPadding="true"
         app:cardElevation="4dp"
+        android:visibility="gone"
         android:elevation="20dp"
         android:background="@drawable/custom_border"
         app:cardCornerRadius="3dp">
@@ -61,16 +62,16 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textStyle="bold"/>
 
+
             <TextView
                 android:id="@+id/destinationTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Destination"
                 android:layout_marginTop="10dp"
-                android:textSize="18sp"
+                android:text="Destination"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textStyle="bold"/>
-
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/stop1Text"
