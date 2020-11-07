@@ -1,9 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RideActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/txtSource"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="Source"
+        android:layout_marginTop="25dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_marginLeft="30dp"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtSetSource"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="100dp" />
+
+    <TextView
+        android:id="@+id/txtDestinatiom"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="Destination"
+        android:layout_marginTop="25dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/txtSetSource"
+        android:layout_marginLeft="30dp"/>
+
+    <TextView
+        android:id="@+id/txtSetDestination"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_below="@+id/txtSetSource"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="140dp"
+        />
+
+
+
+    <TextView
+        android:id="@+id/txtStop1"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="25dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:text="Stop1"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/txtSetDestination"
+        android:layout_marginLeft="30dp"/>
+
+
+    <TextView
+        android:id="@+id/txtSetStop1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_below="@+id/txtSetDestination"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="100dp"
+        />
+
+    <TextView
+        android:id="@+id/txtStop2"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="25dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:text="Stop2"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/txtSetStop1"
+        android:layout_marginLeft="30dp"/>
+
+
+    <TextView
+        android:id="@+id/txtSetStop2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_below="@+id/txtSetStop1"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="100dp"
+        />
+
+
+    <TextView
+        android:id="@+id/txtStop3"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="25dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:text="Stop3"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/txtSetStop2"
+        android:layout_marginLeft="30dp"/>
+
+
+    <TextView
+        android:id="@+id/txtSetStop3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_below="@+id/txtSetStop2"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="100dp"
+        />
+
+    <TextView
+        android:id="@+id/txtStop4"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="25dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:text="Stop4"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/txtSetStop3"
+        android:layout_marginLeft="30dp"/>
+
+
+    <TextView
+        android:id="@+id/txtSetStop4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:layout_below="@+id/txtSetStop3"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="100dp"
+        />
+
+    <TextView
+        android:id="@+id/txtFare"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="25dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:text="Fare"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/txtSetStop4"
+        android:layout_marginLeft="30dp"/>
+
+
+    <TextView
+        android:id="@+id/txtSetFare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:layout_below="@+id/txtSetStop4"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="100dp"
+        />
+
+    <Button
+        android:id="@+id/deletebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtSetFare"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="150dp"
+        android:text="Finish ride" />
+
+
+</RelativeLayout>

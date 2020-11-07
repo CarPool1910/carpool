@@ -64,10 +64,10 @@ public class ProfileActivity extends AppCompatActivity {
 //          --------  Buttons  --------
         logout = findViewById(R.id.logout);
         update = findViewById(R.id.update);
-        tempBtn = findViewById(R.id.tempBtn);
+//        tempBtn = findViewById(R.id.tempBtn);
 
 //          --------  Layouts  --------
-        tempLayout = findViewById(R.id.tempLayout);
+//        tempLayout = findViewById(R.id.tempLayout);
         scrollView = findViewById(R.id.scrollView);
 
 
@@ -84,7 +84,7 @@ public class ProfileActivity extends AppCompatActivity {
         txtNumber = findViewById(R.id.txtMobile);
         txtMail = findViewById(R.id.txtMail);
         txt2 = findViewById(R.id.txt2);
-        tempText = findViewById(R.id.tempText);
+//        tempText = findViewById(R.id.tempText);
 
 
 //        --------  EditTexts  --------

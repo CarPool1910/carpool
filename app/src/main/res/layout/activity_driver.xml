@@ -41,7 +41,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/driverNameTV"
                     android:layout_width="280dp"
-                    android:layout_height="35dp"
+                    android:layout_height="40dp"
                     android:hint="Name"
                     android:inputType="text"
                     android:maxLines="1"
@@ -55,7 +55,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/driverMobileTV"
                     android:layout_width="280dp"
-                    android:layout_height="35dp"
+                    android:layout_height="40dp"
                     android:hint="Mobile No"
                     android:inputType="number"
                     android:maxLines="1"
@@ -75,10 +75,10 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etSrc"
                         android:layout_width="280dp"
-                        android:layout_height="35dp"
+                        android:layout_height="40dp"
                         android:hint="Source"
                         android:layout_gravity="center"
-                        android:inputType="number"
+                        android:inputType="text"
                         android:maxLines="1"
                         android:layout_margin="10dp"/>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -100,7 +100,7 @@
 
         <LinearLayout
             android:id="@+id/stop1Layout"
-            android:visibility="visible"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -112,7 +112,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/stop1"
                     android:layout_width="280dp"
-                    android:layout_height="35dp"
+                    android:layout_height="40dp"
                     android:hint="Add Stop"
                     android:inputType="text"
                     android:maxLines="1"
@@ -132,7 +132,7 @@
         </LinearLayout>
             <LinearLayout
                 android:id="@+id/stop2Layout"
-                android:visibility="visible"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -144,7 +144,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/stop2"
                         android:layout_width="280dp"
-                        android:layout_height="35dp"
+                        android:layout_height="40dp"
                         android:hint="Add Stop"
 
                         android:inputType="text"
@@ -166,7 +166,7 @@
 
             <LinearLayout
                 android:id="@+id/stop3Layout"
-                android:visibility="visible"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -178,7 +178,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/stop3"
                         android:layout_width="280dp"
-                        android:layout_height="35dp"
+                        android:layout_height="40dp"
                         android:hint="Add Stop"
                         android:inputType="text"
 
@@ -201,7 +201,7 @@
 
             <LinearLayout
                 android:id="@+id/stop4Layout"
-                android:visibility="visible"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -213,7 +213,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/stop4"
                         android:layout_width="280dp"
-                        android:layout_height="35dp"
+                        android:layout_height="40dp"
                         android:hint="Add Stop"
                         android:inputType="text"
                         android:maxLines="1"
@@ -234,7 +234,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etDest"
                     android:layout_width="280dp"
-                    android:layout_height="35dp"
+                    android:layout_height="40dp"
                     android:hint="Destination"
                     android:inputType="text"
                     android:maxLines="1"
@@ -297,7 +297,7 @@
             <EditText
                 android:id="@+id/etPassenger"
                 android:layout_width="280dp"
-                android:layout_height="35dp"
+                android:layout_height="40dp"
                 android:background="@drawable/custom_border"
                 android:inputType="number"
                 android:hint="  Enter passenger no"
@@ -314,11 +314,11 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etFare"
                     android:layout_width="280dp"
-                    android:layout_height="35dp"
+                    android:layout_height="40dp"
                     android:hint="Fare"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:layout_margin="10dp"/>
+                    android:layout_margin="15dp"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button

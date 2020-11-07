@@ -7,50 +7,50 @@
 
     tools:context=".ProfileActivity">
 
-    <LinearLayout
-        android:id="@+id/tempLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone"
-        android:orientation="vertical">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/tempLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:visibility="gone"-->
+<!--        android:orientation="vertical">-->
 
-        <TextView
-            android:id="@+id/tempText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email not verified! Please verify email to continue"
-            android:textStyle="bold"
-            android:layout_margin="10dp"
-            android:textSize="20sp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-            />
+<!--        <TextView-->
+<!--            android:id="@+id/tempText"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Email not verified! Please verify email to continue"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textAppearance="@style/TextAppearance.AppCompat.Caption"-->
+<!--            />-->
 
-        <Button
-            android:id="@+id/tempBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Verify now"
-            android:elevation="10dp"
-            android:layout_margin="10dp"
-            android:onClick="verifyMail"
-            android:clickable="true"
-            />
+<!--        <Button-->
+<!--            android:id="@+id/tempBtn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:text="Verify now"-->
+<!--            android:elevation="10dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:onClick="verifyMail"-->
+<!--            android:clickable="true"-->
+<!--            />-->
 
-        <Button
-            android:id="@+id/tempBtn2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Logout"
-            android:elevation="10dp"
-            android:layout_margin="10dp"
-            android:onClick="logOut"
-            android:clickable="true"
-            />
+<!--        <Button-->
+<!--            android:id="@+id/tempBtn2"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:text="Logout"-->
+<!--            android:elevation="10dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:onClick="logOut"-->
+<!--            android:clickable="true"-->
+<!--            />-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
 
 

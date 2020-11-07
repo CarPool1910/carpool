@@ -213,7 +213,9 @@ public class Driver extends AppCompatActivity {
                 dr.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(Driver.this, "Details Saved", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(Driver.this, "Details Saved", Toast.LENGTH_SHORT).show();
+                        Intent i=new Intent(Driver.this,RideActivity.class);
+                        startActivity(i);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
