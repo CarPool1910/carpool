@@ -38,7 +38,8 @@ public class Driver extends AppCompatActivity {
     LinearLayout stop1Layout, stop2Layout, stop3Layout, stop4Layout;
 
     TextView t1, t2, t3, t4, t5, t6;
-    EditText e1, e2, e3, e4;
+    TextInputEditText e1, e2, e4;
+    EditText e3;
     RadioGroup radioGroup;
     RadioButton rb1, rb2;
     Button btnSearch;
@@ -93,6 +94,7 @@ public class Driver extends AppCompatActivity {
 
 
         btnSearch = findViewById(R.id.btnSearch);
+//        btnSearch.setEnabled(false);
 
 
         auth = FirebaseAuth.getInstance();
@@ -114,15 +116,15 @@ public class Driver extends AppCompatActivity {
             }
         });
 
-
+        //onclick stop method
         stops();
 
-        btnSearch.setEnabled(true);
+
+//        btnSearch.setEnabled(true);
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
                 name = te1.getText().toString();
                 mobile = te2.getText().toString();
@@ -134,107 +136,96 @@ public class Driver extends AppCompatActivity {
                 //Validation
                 if (TextUtils.isEmpty(name)) {
                     te1.setError("Please enter Name");
-                }
-                if (TextUtils.isEmpty(mobile)) {
+                } else if (TextUtils.isEmpty(mobile)) {
                     te2.setError("Please enter mobile No");
-                }
-                if (TextUtils.isEmpty(source)) {
+                } else if (TextUtils.isEmpty(source)) {
                     e1.setError("Please Enter Source");
-                }
-                if (TextUtils.isEmpty(destination)) {
+                } else if (TextUtils.isEmpty(destination)) {
                     e2.setError("Please Enter Destination");
-                }
-                if (TextUtils.isEmpty(passengers)) {
+                } else if (TextUtils.isEmpty(passengers)) {
                     e3.setError("Please Enter Valid Number of Passengers");
-                }
-                if (TextUtils.isEmpty(fare)) {
+                } else if (TextUtils.isEmpty(fare)) {
                     e4.setError("Please Enter the Fare");
-                }
-
-
-                //Taking input from stops
-                //stop1
-                if (inputStop1.getText().length() != 0) {
-                    stop1 = inputStop1.getText().toString();
                 } else {
-                    stop1 = "";
-                }
 
-                //stop2
-                if (inputStop2.getText().length() != 0) {
-                    stop2 = inputStop2.getText().toString();
-                } else {
-                    stop2 = "";
-                }
+                    //Taking input from stops
+                    //Stop1
+                    if (inputStop1.getText().length() != 0) {
+                        stop1 = inputStop1.getText().toString();
+                    } else {
+                        stop1 = "";
+                    }
 
-                //stop3
-                if (inputStop3.getText().length() != 0) {
-                    stop3 = inputStop3.getText().toString();
-                } else {
-                    stop3 = "";
-                }
+                    //stop2
+                    if (inputStop2.getText().length() != 0) {
+                        stop2 = inputStop2.getText().toString();
+                    } else {
+                        stop2 = "";
+                    }
 
-                //stop4
-                if (inputStop4.getText().length() != 0) {
-                    stop4 = inputStop4.getText().toString();
-                } else {
-                    stop4 = "";
-                }
+                    //stop3
+                    if (inputStop3.getText().length() != 0) {
+                        stop3 = inputStop3.getText().toString();
+                    } else {
+                        stop3 = "";
+                    }
 
+                    //stop4
+                    if (inputStop4.getText().length() != 0) {
+                        stop4 = inputStop4.getText().toString();
+                    } else {
+                        stop4 = "";
+                    }
 
-                RadioButton vehiclebtn = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
-                vehicle = vehiclebtn.getText().toString();
-
-
-                radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                        switch (i) {
-                            case R.id.radioBike:
-                                vehicle = "Bike";
-                                break;
-                            case R.id.radioCar:
-                                vehicle = "Car";
-                                break;
+                    //Vehicle Dtermination
+                    RadioButton vehiclebtn = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
+                    vehicle = vehiclebtn.getText().toString();
+                    radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                            switch (i) {
+                                case R.id.radioBike:
+                                    vehicle = "Bike";
+                                    break;
+                                case R.id.radioCar:
+                                    vehicle = "Car";
+                                    break;
+                            }
                         }
-                    }
-                });
-                Log.d("abc", "onCheckedChanged: Vehicle" + vehicle);
+                    });
 
 
-                userId = auth.getCurrentUser().getUid();
-                DocumentReference dr = firestore.collection("Drivers").document(userId);
-                Map<String, Object> user = new HashMap<>();
-//                        user.put("ID",userId);
-                user.put("Name", name);
-                user.put("Mobile", mobile);
-                user.put("Source", source);
-                user.put("Stop1", stop1);
-                user.put("Stop2", stop2);
-                user.put("Stop3", stop3);
-                user.put("Stop4", stop4);
-                user.put("Destination", destination);
-                user.put("Vehicle", vehicle);
-                user.put("Passengers", passengers);
-                user.put("Fare", fare);
+                    userId = auth.getCurrentUser().getUid();
+                    DocumentReference dr = firestore.collection("Drivers").document(userId);
+                    Map<String, Object> user = new HashMap<>();
+                    user.put("Name", name);
+                    user.put("Mobile", mobile);
+                    user.put("Source", source);
+                    user.put("Stop1", stop1);
+                    user.put("Stop2", stop2);
+                    user.put("Stop3", stop3);
+                    user.put("Stop4", stop4);
+                    user.put("Destination", destination);
+                    user.put("Vehicle", vehicle);
+                    user.put("Passengers", passengers);
+                    user.put("Fare", fare);
 
-                dr.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(Driver.this, "Details Saved", Toast.LENGTH_SHORT).show();
-                        Intent i=new Intent(Driver.this,RideActivity.class);
-                        startActivity(i);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Driver.this, "Invalid Details", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                    dr.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(Driver.this, "Details Saved", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(Driver.this, RideActivity.class);
+                            startActivity(i);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(Driver.this, "Invalid Details", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
         });
-
-
     }
 
     private void stops() {
