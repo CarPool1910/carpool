@@ -91,6 +91,7 @@ public class Driver extends AppCompatActivity {
         rb1 = findViewById(R.id.radioBike);
         rb2 = findViewById(R.id.radioCar);
 
+
         btnSearch = findViewById(R.id.btnSearch);
 
 
@@ -114,12 +115,23 @@ public class Driver extends AppCompatActivity {
         });
 
 
+        stops();
+
         btnSearch.setEnabled(true);
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+
+                name = te1.getText().toString();
+                mobile = te2.getText().toString();
+                source = e1.getText().toString();
+                destination = e2.getText().toString();
+                passengers = e3.getText().toString();
+                fare = e4.getText().toString();
+
+                //Validation
                 if (TextUtils.isEmpty(name)) {
                     te1.setError("Please enter Name");
                 }
@@ -139,13 +151,6 @@ public class Driver extends AppCompatActivity {
                     e4.setError("Please Enter the Fare");
                 }
 
-                name = te1.getText().toString();
-                mobile = te2.getText().toString();
-                source = e1.getText().toString();
-                destination = e2.getText().toString();
-                passengers = e3.getText().toString();
-                fare = e4.getText().toString();
-
 
                 //Taking input from stops
                 //stop1
@@ -154,18 +159,21 @@ public class Driver extends AppCompatActivity {
                 } else {
                     stop1 = "";
                 }
+
                 //stop2
                 if (inputStop2.getText().length() != 0) {
                     stop2 = inputStop2.getText().toString();
                 } else {
                     stop2 = "";
                 }
+
                 //stop3
                 if (inputStop3.getText().length() != 0) {
                     stop3 = inputStop3.getText().toString();
                 } else {
                     stop3 = "";
                 }
+
                 //stop4
                 if (inputStop4.getText().length() != 0) {
                     stop4 = inputStop4.getText().toString();
@@ -213,7 +221,7 @@ public class Driver extends AppCompatActivity {
                 dr.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-//                        Toast.makeText(Driver.this, "Details Saved", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Driver.this, "Details Saved", Toast.LENGTH_SHORT).show();
                         Intent i=new Intent(Driver.this,RideActivity.class);
                         startActivity(i);
                     }
@@ -227,7 +235,6 @@ public class Driver extends AppCompatActivity {
         });
 
 
-        stops();
     }
 
     private void stops() {
