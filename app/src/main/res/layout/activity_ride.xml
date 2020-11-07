@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".RideActivity">
 
+    <RelativeLayout
+        android:id="@+id/RideAvailableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
     <TextView
         android:id="@+id/txtSource"
         android:layout_width="wrap_content"
@@ -181,5 +187,24 @@
         android:layout_marginLeft="150dp"
         android:text="Finish ride" />
 
+    </RelativeLayout>
 
+    <LinearLayout
+        android:id="@+id/RideNotAvailableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="visible"
+        android:layout_below="@id/RideAvailableLayout">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Rides Yet!!"
+            android:textSize="20sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    </LinearLayout>
 </RelativeLayout>

@@ -7,8 +7,11 @@
 
         <menu android:checkableBehavior="single">
 
-            <item android:id="@+id/idHome"
-                android:title="Home"/>
+        <item android:id="@+id/idYourRide"
+            android:title="Your Ride"/>
+
+<!--            <item android:id="@+id/idHome"-->
+<!--                android:title="Home"/>-->
 
             <item android:id="@+id/idProfile"
                 android:title="Profile"/>

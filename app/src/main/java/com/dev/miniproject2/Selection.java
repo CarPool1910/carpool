@@ -75,8 +75,9 @@ public class Selection extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.idHome:
-                        startActivity(new Intent(Selection.this, Selection.class));
+                    case R.id.idYourRide:
+                        startActivity(new Intent(Selection.this, RideActivity.class));
+//                       overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                         finish();
                         break;
                     case R.id.idProfile:

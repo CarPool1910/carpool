@@ -180,19 +180,19 @@ public class Driver extends AppCompatActivity {
                     //Vehicle Dtermination
                     RadioButton vehiclebtn = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
                     vehicle = vehiclebtn.getText().toString();
-                    radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                        @Override
-                        public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                            switch (i) {
-                                case R.id.radioBike:
-                                    vehicle = "Bike";
-                                    break;
-                                case R.id.radioCar:
-                                    vehicle = "Car";
-                                    break;
-                            }
-                        }
-                    });
+//                    radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//                        @Override
+//                        public void onCheckedChanged(RadioGroup radioGroup, int i) {
+//                            switch (i) {
+//                                case R.id.radioBike:
+//                                    vehicle = "Bike";
+//                                    break;
+//                                case R.id.radioCar:
+//                                    vehicle = "Car";
+//                                    break;
+//                            }
+//                        }
+//                    });
 
 
                     userId = auth.getCurrentUser().getUid();

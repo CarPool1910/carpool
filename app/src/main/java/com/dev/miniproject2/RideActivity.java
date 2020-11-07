@@ -3,9 +3,13 @@ package com.dev.miniproject2;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,12 +21,14 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class RideActivity extends AppCompatActivity {
 
-    TextView t1,t3,t5,t7,t9,t11,t13;
-    TextView t2,t4,t6,t8,t10,t12,t14;
+    TextView t1, t3, t5, t7, t9, t11, t13;
+    TextView t2, t4, t6, t8, t10, t12, t14;
     Button finishride;
     FirebaseAuth auth;
     FirebaseFirestore firestore;
     String userId;
+    RelativeLayout Ride1;
+    LinearLayout Ride2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,45 +36,49 @@ public class RideActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ride);
 
         //Source
-        t1=findViewById(R.id.txtSource);
-        t2=findViewById(R.id.txtSetSource);
+        t1 = findViewById(R.id.txtSource);
+        t2 = findViewById(R.id.txtSetSource);
 
         //Destination
-        t3=findViewById(R.id.txtDestinatiom);
-        t4=findViewById(R.id.txtSetDestination);
+        t3 = findViewById(R.id.txtDestinatiom);
+        t4 = findViewById(R.id.txtSetDestination);
 
         //Stop1
-        t5=findViewById(R.id.txtStop1);
-        t6=findViewById(R.id.txtSetStop1);
+        t5 = findViewById(R.id.txtStop1);
+        t6 = findViewById(R.id.txtSetStop1);
 
         //Stop2
-        t7=findViewById(R.id.txtStop2);
-        t8=findViewById(R.id.txtSetStop2);
+        t7 = findViewById(R.id.txtStop2);
+        t8 = findViewById(R.id.txtSetStop2);
 
         //Stop3
-        t9=findViewById(R.id.txtStop3);
-        t10=findViewById(R.id.txtSetStop3);
+        t9 = findViewById(R.id.txtStop3);
+        t10 = findViewById(R.id.txtSetStop3);
 
         //Stop4
-        t11=findViewById(R.id.txtStop4);
-        t12=findViewById(R.id.txtSetStop4);
+        t11 = findViewById(R.id.txtStop4);
+        t12 = findViewById(R.id.txtSetStop4);
 
         //Fare
-        t13=findViewById(R.id.txtFare);
-        t14=findViewById(R.id.txtSetFare);
+        t13 = findViewById(R.id.txtFare);
+        t14 = findViewById(R.id.txtSetFare);
 
         //Finish Ride Button
-        finishride=findViewById(R.id.deletebtn);
+        finishride = findViewById(R.id.deletebtn);
 
-        auth=FirebaseAuth.getInstance();
-        firestore=FirebaseFirestore.getInstance();
+        //Layouts
+        Ride1=findViewById(R.id.RideAvailableLayout);
+        Ride2=findViewById(R.id.RideNotAvailableLayout);
 
-        userId=auth.getCurrentUser().getUid();
-        DocumentReference dr=firestore.collection("Drivers").document(userId);
+        auth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
+
+        userId = auth.getCurrentUser().getUid();
+        DocumentReference dr = firestore.collection("Drivers").document(userId);
         dr.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                try{
+                try {
                     t2.setText(value.getString("Source"));
                     t4.setText(value.getString("Destination"));
                     t6.setText(value.getString("Stop1"));
@@ -76,14 +86,38 @@ public class RideActivity extends AppCompatActivity {
                     t10.setText(value.getString("Stop3"));
                     t12.setText(value.getString("Stop4"));
                     t14.setText(value.getString("Fare"));
-                }
 
-                catch (Exception e){
-                    Log.e("Database", "Exception: "+e.getMessage());
+                    if(t2.getText().toString().length()!=0){
+                        Ride1.setVisibility(View.VISIBLE);
+                        Ride2.setVisibility(View.GONE);
+                    }
+                    else{
+                        Ride1.setVisibility(View.GONE);
+                        Ride2.setVisibility(View.VISIBLE);
+                    }
+
+
+
+                } catch (Exception e) {
+                    Log.e("Database", "Exception: " + e.getMessage());
                 }
             }
         });
 
+        finishride.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("Valuessss", "T2 Value:"+t2.getText().toString());
+                    firestore.collection("Drivers").document(userId).delete();
+            }
+        });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(RideActivity.this,Selection.class));
+//        overridePendingTransition(android.R.anim.slide_out_right, android.R.anim.slide_in_left);
     }
 }
