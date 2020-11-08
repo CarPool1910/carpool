@@ -20,7 +20,7 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Selection extends AppCompatActivity {
+public class SelectionActivity extends AppCompatActivity {
 
     LinearLayout layout1, layout2;
     ImageView getPool, getRide;
@@ -59,14 +59,14 @@ public class Selection extends AppCompatActivity {
         layout1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Selection.this, Passenger.class));
+                startActivity(new Intent(SelectionActivity.this, PassengerActivity.class));
             }
         });
 
         layout2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Selection.this, Driver.class));
+                startActivity(new Intent(SelectionActivity.this, DriverActivity.class));
             }
         });
 
@@ -76,20 +76,20 @@ public class Selection extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.idYourRide:
-                        startActivity(new Intent(Selection.this, RideActivity.class));
+                        startActivity(new Intent(SelectionActivity.this, RideActivity.class));
 //                       overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                         finish();
                         break;
                     case R.id.idProfile:
-                        startActivity(new Intent(Selection.this, ProfileActivity.class));
+                        startActivity(new Intent(SelectionActivity.this, ProfileActivity.class));
                         finish();
                         break;
                     case R.id.idGetPool:
-                        startActivity(new Intent(Selection.this, Passenger.class));
+                        startActivity(new Intent(SelectionActivity.this, PassengerActivity.class));
                         finish();
                         break;
                     case R.id.idDrivePool:
-                        startActivity(new Intent(Selection.this, Driver.class));
+                        startActivity(new Intent(SelectionActivity.this, DriverActivity.class));
                         finish();
                         break;
                     case R.id.idContact:
@@ -104,7 +104,7 @@ public class Selection extends AppCompatActivity {
                         startActivity(chooser);
                         break;
                     case R.id.idAbout:
-                        startActivity(new Intent(Selection.this, AboutActivity.class));
+                        startActivity(new Intent(SelectionActivity.this, AboutActivity.class));
                         finish();
                         break;
                     case R.id.idShare:
@@ -114,12 +114,13 @@ public class Selection extends AppCompatActivity {
                         startActivity(chooser2);
                         break;
                     case R.id.idSettings:
-                        Toast.makeText(Selection.this, "Settings are not yet finalised", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SelectionActivity.this, "Settings are not yet finalised", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.idLogOut:
                         auth.signOut();
                         if (auth.getCurrentUser() == null) {
-                            startActivity(new Intent(Selection.this, LoginActivity.class));
+                            startActivity(new Intent(SelectionActivity.this, LoginActivity.class));
+                            Toast.makeText(SelectionActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
                             finish();
                         }
 
@@ -130,13 +131,14 @@ public class Selection extends AppCompatActivity {
         });
 
     }
+
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-           // moveTaskToBack(true);
+            moveTaskToBack(true);
             finish();
         }
     }

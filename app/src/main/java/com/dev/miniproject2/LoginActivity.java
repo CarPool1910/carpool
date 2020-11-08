@@ -7,8 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,7 +37,6 @@ public class LoginActivity extends AppCompatActivity {
 //---------------------------------------------cast----------------------------------------------
 
 //          --------  TextViews  --------
-        txtMail = findViewById(R.id.txtMail);
 
         txt1 = findViewById(R.id.text1);
         txt2 = findViewById(R.id.text2);
@@ -57,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(getApplicationContext(), Selection.class));
+            startActivity(new Intent(getApplicationContext(), SelectionActivity.class));
             finish();
         }
 
@@ -73,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this, Selection.class)); //MainActivity
+                        startActivity(new Intent(LoginActivity.this, SelectionActivity.class)); //MainActivity
                         finish();
                     } else {
                         Toast.makeText(LoginActivity.this, "Error Signing in", Toast.LENGTH_SHORT).show();

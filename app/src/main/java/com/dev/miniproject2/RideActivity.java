@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -67,8 +68,8 @@ public class RideActivity extends AppCompatActivity {
         finishride = findViewById(R.id.deletebtn);
 
         //Layouts
-        Ride1=findViewById(R.id.RideAvailableLayout);
-        Ride2=findViewById(R.id.RideNotAvailableLayout);
+        Ride1 = findViewById(R.id.RideAvailableLayout);
+        Ride2 = findViewById(R.id.RideNotAvailableLayout);
 
         auth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
@@ -87,15 +88,13 @@ public class RideActivity extends AppCompatActivity {
                     t12.setText(value.getString("Stop4"));
                     t14.setText(value.getString("Fare"));
 
-                    if(t2.getText().toString().length()!=0){
+                    if (t2.getText().toString().length() != 0) {
                         Ride1.setVisibility(View.VISIBLE);
                         Ride2.setVisibility(View.GONE);
-                    }
-                    else{
+                    } else {
                         Ride1.setVisibility(View.GONE);
                         Ride2.setVisibility(View.VISIBLE);
                     }
-
 
 
                 } catch (Exception e) {
@@ -107,8 +106,9 @@ public class RideActivity extends AppCompatActivity {
         finishride.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Valuessss", "T2 Value:"+t2.getText().toString());
-                    firestore.collection("Drivers").document(userId).delete();
+                Log.d("Valuessss", "T2 Value:" + t2.getText().toString());
+                firestore.collection("Drivers").document(userId).delete();
+                Toast.makeText(RideActivity.this, "Ride finished", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -117,7 +117,7 @@ public class RideActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(RideActivity.this,Selection.class));
+        startActivity(new Intent(RideActivity.this, SelectionActivity.class));
 //        overridePendingTransition(android.R.anim.slide_out_right, android.R.anim.slide_in_left);
     }
 }

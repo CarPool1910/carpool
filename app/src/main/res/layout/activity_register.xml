@@ -170,7 +170,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
                 android:clickable="true"
-                android:text="Esisting user? Login"
+                android:text="Existing user? Login"
                 android:textStyle="italic"
                 android:textFontWeight="1"
                 android:textSize="15sp"

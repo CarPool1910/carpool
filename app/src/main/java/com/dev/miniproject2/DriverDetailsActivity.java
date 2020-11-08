@@ -12,13 +12,11 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.net.http.SslCertificate;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,9 +30,8 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 
-public class DriverDetails extends AppCompatActivity {
+public class DriverDetailsActivity extends AppCompatActivity {
 
     FirebaseFirestore firestore, firestore2;
     RecyclerView driverRV;
@@ -56,7 +53,7 @@ public class DriverDetails extends AppCompatActivity {
 
         //Passenger Details
         DocumentReference passDetails = firestore2.collection("passengers").document(passengerID);
-        passDetails.addSnapshotListener(DriverDetails.this, new EventListener<DocumentSnapshot>() {
+        passDetails.addSnapshotListener(DriverDetailsActivity.this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                 passengerSource = value.getString("Source");
@@ -112,8 +109,8 @@ public class DriverDetails extends AppCompatActivity {
                             public void onClick(View view) {
                                 Intent i = new Intent(Intent.ACTION_CALL);
                                 i.setData(Uri.parse("tel:" + model.getMobile()));
-                                if (ActivityCompat.checkSelfPermission(DriverDetails.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                                    Toast.makeText(DriverDetails.this, "Please Grant the Permission", Toast.LENGTH_SHORT).show();
+                                if (ActivityCompat.checkSelfPermission(DriverDetailsActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                                    Toast.makeText(DriverDetailsActivity.this, "Please Grant the Permission", Toast.LENGTH_SHORT).show();
                                     requestPermission();
                                 } else {
                                     startActivity(i);

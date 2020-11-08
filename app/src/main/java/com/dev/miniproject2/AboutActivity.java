@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.TextView;
 
 public class AboutActivity extends AppCompatActivity {
 
@@ -19,7 +17,7 @@ public class AboutActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(AboutActivity.this, Selection.class));
+        startActivity(new Intent(AboutActivity.this, SelectionActivity.class));
         finish();
     }
 

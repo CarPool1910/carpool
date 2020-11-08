@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,9 +50,6 @@ public class RegisterActivity extends AppCompatActivity {
 //---------------------------------------------cast----------------------------------------------
 
 //          --------  TextViews  --------
-        txtName = findViewById(R.id.txtName);
-        txtNumber = findViewById(R.id.txtMobile);
-        txtMail = findViewById(R.id.txtMail);
         txt1 = findViewById(R.id.text1);
         txt2 = findViewById(R.id.text2);
 
@@ -147,7 +145,7 @@ public class RegisterActivity extends AppCompatActivity {
                                             @Override
                                             public void onSuccess(Void aVoid) {
                                                 Toast.makeText(RegisterActivity.this, "User Profile created successfully", Toast.LENGTH_SHORT).show();
-                                                startActivity(new Intent(RegisterActivity.this,Selection.class));
+                                                startActivity(new Intent(RegisterActivity.this, SelectionActivity.class));
                                                 finish();
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {                   //failure of data addition
@@ -188,6 +186,7 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
         finish();
     }
 }

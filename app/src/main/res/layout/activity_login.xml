@@ -109,18 +109,19 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <Button
-            android:id="@+id/btnSignin"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="100dp"
-            android:background="@drawable/custom_border2"
-            android:textColor="@android:color/black"
-            android:elevation="10dp"
-            android:onClick="SignIn"
-            android:text="Log In"
-            android:tooltipText="Click to Register" />
+            <Button
+                android:id="@+id/btnSignin"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="100dp"
+                android:background="@drawable/custom_border2"
+                android:layout_centerVertical="true"
+                android:textColor="@android:color/black"
+                android:elevation="50dp"
+                android:onClick="SignIn"
+                android:text="Log In"
+                android:tooltipText="Click to Register" />
 
 
 

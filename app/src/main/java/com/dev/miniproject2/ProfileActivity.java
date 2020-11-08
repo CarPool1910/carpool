@@ -2,20 +2,14 @@ package com.dev.miniproject2;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -33,21 +27,18 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 public class ProfileActivity extends AppCompatActivity {
-    Button logout, update, tempBtn;
+    Button  edit, tempBtn;
     FirebaseAuth auth;
     StorageReference storage;
     FirebaseFirestore firestore;
     FirebaseUser user;
-    String name, mail, gender, mobile;
+    String name, mail, mobile;
     String userID;
-    TextView txtName, txtNumber, txtMail, txt2, tempText;
-    EditText etName, etNumber, etMail;
+    TextView nameText, nameSet, mobileText, mobileSet, mailText, mailSet, tempText;
     ImageView imageView;
-    ProgressDialog progressDialog;
     StorageReference fileRef, profileRef;
     LinearLayout tempLayout;
     ScrollView scrollView;
@@ -57,40 +48,33 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        //---------------------------------------------cast----------------------------------------------//          --------  Buttons  --------
-//          --------  ImageView  --------
-        imageView = findViewById(R.id.imageView);
 
-//          --------  Buttons  --------
-        logout = findViewById(R.id.logout);
-        update = findViewById(R.id.update);
+        //TextViews
+        tempText = findViewById(R.id.tempText);
+        nameText = findViewById(R.id.nameText);
+        nameSet = findViewById(R.id.nameSet);
+        mobileText = findViewById(R.id.mobileText);
+        mobileSet = findViewById(R.id.mobileSet);
+        mailText = findViewById(R.id.mailText);
+        mailSet = findViewById(R.id.mailSet);
+
+        //Buttons
         tempBtn = findViewById(R.id.tempBtn);
+        edit = findViewById(R.id.editBtn);
 
-//          --------  Layouts  --------
+        //Layouts
         tempLayout = findViewById(R.id.tempLayout);
         scrollView = findViewById(R.id.scrollView);
 
-
-//          --------  Firebase  --------
+        //Firebase
         auth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-        userID = auth.getCurrentUser().getUid();
         user = auth.getCurrentUser();
         storage = FirebaseStorage.getInstance().getReference();
+        userID = auth.getCurrentUser().getUid();
 
-
-        //          --------  TextViews  --------
-        txtName = findViewById(R.id.txtName);
-        txtNumber = findViewById(R.id.txtMobile);
-        txtMail = findViewById(R.id.txtMail);
-        txt2 = findViewById(R.id.txt2);
-        tempText = findViewById(R.id.tempText);
-
-
-//        --------  EditTexts  --------
-        etName = (EditText) findViewById(R.id.etName);
-        etNumber = (EditText) findViewById(R.id.etNumber);
-        etMail = (EditText) findViewById(R.id.etMail);
+        //ImageView
+        imageView = findViewById(R.id.imageView);
 
 
         if (!user.isEmailVerified()) {
@@ -99,30 +83,22 @@ public class ProfileActivity extends AppCompatActivity {
         } else {
             scrollView.setVisibility(View.VISIBLE);
             tempLayout.setVisibility(View.GONE);
+            showData();
         }
-
-        showData();
 
     }
 
     public void showData() {
 
         DocumentReference dr = firestore.collection("users").document(userID);
-        dr.addSnapshotListener(ProfileActivity.this,  new EventListener<DocumentSnapshot>() {
+        dr.addSnapshotListener(ProfileActivity.this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
-//                    String tempName, tempMobile, tempMail;
-//                    tempName = value.getString("name");
-//                    tempMobile = value.getString("mobile");
-//                    tempMail = value.getString("mail");
-//
                 try {
-
-                    etName.setText(value.getString("name"));
-                    etNumber.setText(value.getString("mobile"));
-                    etMail.setText(value.getString("mail"));
-
+                    nameSet.setText(value.getString("name"));
+                    mobileSet.setText(value.getString("mobile"));
+                    mailSet.setText(value.getString("mail"));
 
                 } catch (Exception e) {
                     Log.e("DTS 1", "Exception caught " + e.getMessage());
@@ -145,105 +121,21 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
+    public void editProfile(View view) {
+     startActivity(new Intent(ProfileActivity.this, EditProfileActivity.class));
+     finish();
+    }
+
+
     public void logOut(View view) {
         auth.signOut();
         if (auth.getCurrentUser() == null) {
             startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
+            Toast.makeText(ProfileActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
             finish();
         }
     }
 
-    public void updateProfile(View view) {
-        Toast.makeText(this, "This feature is not yet available", Toast.LENGTH_SHORT).show();
-
-
-    }
-
-    public void resetPswd(View view) {
-        final EditText resetPass = new EditText(view.getContext());
-        AlertDialog.Builder dialog = new AlertDialog.Builder(view.getContext());
-        dialog.setTitle("Change Password");
-        dialog.setMessage("Enter new password (at least 6 characters long)");
-        dialog.setView(resetPass);
-
-        dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                String newPswd = resetPass.getText().toString();
-                if (newPswd.length() < 6) {
-                    Toast.makeText(ProfileActivity.this, "Password should be at least 6 characters", Toast.LENGTH_SHORT).show();
-                }
-                user.updatePassword(newPswd).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(ProfileActivity.this, "Password changed  successfully", Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(ProfileActivity.this, "Password not changed, " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
-        dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                //Do nothing
-            }
-        });
-
-        dialog.create().show();
-
-
-    }
-
-    public void updatePicture(View view) {
-        Intent openGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);// uri of particular img
-        startActivityForResult(openGallery, 1000);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1000) {
-            if (resultCode == Activity.RESULT_OK) {
-//                 progressDialog = new ProgressDialog(getApplicationContext());
-//                progressDialog.setMessage("Uploading profile picture");
-//                progressDialog.show();
-                Uri imageUri = data.getData();
-                // imageView.setImageURI(imageUri);
-                uploadProfilePicture(imageUri);
-            }
-        }
-    }
-
-    public void uploadProfilePicture(Uri imageUri) {
-        try {
-            //upload image to firebase storage
-            fileRef = storage.child("users/" + auth.getCurrentUser().getUid() + "/profile_image");
-            fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(ProfileActivity.this, "Profile Picture Uploaded", Toast.LENGTH_SHORT).show();
-                    fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            Picasso.get().load(uri).into(imageView);
-//                        progressDialog.dismiss();
-                        }
-                    });
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(ProfileActivity.this, "Error in uploading profile picture", Toast.LENGTH_SHORT).show();
-                }
-            });
-        } catch (Exception e) {
-            Log.d("Exception", "Profile Pic Exception" + e.getMessage());
-        }
-    }
 
     public void verifyMail(View view) {
         user = auth.getCurrentUser();
@@ -258,5 +150,12 @@ public class ProfileActivity extends AppCompatActivity {
                 Toast.makeText(ProfileActivity.this, "Error in sending email..", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(ProfileActivity.this, SelectionActivity.class));
+        finish();
     }
 }

@@ -189,6 +189,8 @@
 
     </RelativeLayout>
 
+
+
     <LinearLayout
         android:id="@+id/RideNotAvailableLayout"
         android:layout_width="match_parent"

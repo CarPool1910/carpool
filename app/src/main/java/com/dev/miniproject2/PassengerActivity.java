@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,7 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Passenger extends AppCompatActivity {
+public class PassengerActivity extends AppCompatActivity {
     TextView t1, t2, t3, t4, t5;
     EditText e1, e2, e3;
     RadioGroup rg;
@@ -118,14 +117,14 @@ public class Passenger extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
 //                    Toast.makeText(Passenger.this,"Details Saved",Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(Passenger.this, DriverDetails.class);
+                        Intent i = new Intent(PassengerActivity.this, DriverDetailsActivity.class);
                         startActivity(i);
                         finish();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Passenger.this, "Invalid Details", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PassengerActivity.this, "Invalid Details", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -137,7 +136,7 @@ public class Passenger extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(Passenger.this, Selection.class));
+        startActivity(new Intent(PassengerActivity.this, SelectionActivity.class));
         finish();
     }
 

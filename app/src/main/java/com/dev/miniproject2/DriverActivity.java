@@ -6,24 +6,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -31,7 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Driver extends AppCompatActivity {
+public class DriverActivity extends AppCompatActivity {
 
     TextInputEditText te1, te2, inputStop1, inputStop2, inputStop3, inputStop4;
 
@@ -213,14 +208,14 @@ public class Driver extends AppCompatActivity {
                     dr.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Toast.makeText(Driver.this, "Details Saved", Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(Driver.this, RideActivity.class);
+                            Toast.makeText(DriverActivity.this, "Details Saved", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(DriverActivity.this, RideActivity.class);
                             startActivity(i);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(Driver.this, "Invalid Details", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DriverActivity.this, "Invalid Details", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -268,7 +263,7 @@ public class Driver extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(Driver.this, Selection.class));
+        startActivity(new Intent(DriverActivity.this, SelectionActivity.class));
         finish();
     }
 }

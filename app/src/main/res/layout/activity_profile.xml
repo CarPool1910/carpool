@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
-
     tools:context=".ProfileActivity">
 
     <LinearLayout
         android:id="@+id/tempLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="200dp"
         android:visibility="gone"
         android:orientation="vertical">
 
@@ -20,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Email not verified! Please verify email to continue"
-            android:textStyle="bold"
+            android:textStyle="italic"
             android:layout_margin="10dp"
             android:textSize="20sp"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
@@ -28,21 +29,24 @@
 
         <Button
             android:id="@+id/tempBtn"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Verify now"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/custom_border2"
+            android:textColor="@android:color/black"
             android:elevation="10dp"
-            android:layout_margin="10dp"
             android:onClick="verifyMail"
-            android:clickable="true"
-            />
+            android:text="Verify Now"
+            android:tooltipText="Click to Register" />
+
 
         <Button
             android:id="@+id/tempBtn2"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:background="@drawable/custom_border2"
             android:text="Logout"
             android:elevation="10dp"
             android:layout_margin="10dp"
@@ -53,15 +57,18 @@
     </LinearLayout>
 
 
-
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
+        android:visibility="visible">
 
-        <RelativeLayout
+
+
+        <LinearLayout
             android:id="@+id/mainLayout"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -69,138 +76,134 @@
                 android:id="@+id/imageView"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:layout_marginTop="50dp"
-                android:layout_centerHorizontal="true"
-                android:src="@mipmap/ic_launcher"
+                android:layout_marginTop="70dp"
+                android:layout_gravity="center"
+                android:src="@color/common_google_signin_btn_text_dark_disabled"
                 android:background="#ffffffff"
                 android:foreground="@drawable/custom_border"
-                android:onClick="updatePicture"
                 />
 
 
-            <TextView
-                android:id="@+id/txtName"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:text="Name"
-                android:layout_marginTop="25dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textFontWeight="1"
-                android:layout_below="@+id/imageView"
-                android:layout_marginLeft="30dp"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/etName"
-                android:layout_width="280dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/imageView"
-                android:hint="  Your name"
-                android:inputType="textPersonName"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="100dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="70dp">
 
-                />
+                <TextView
+                    android:id="@+id/nameText"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="Name: "
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="40dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="18sp"
+                    android:drawableLeft="@drawable/ic_name" />
 
-            <TextView
-                android:id="@+id/txtMobile"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:text="Mobile"
-                android:layout_marginTop="25dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textFontWeight="1"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_below="@+id/etName"
-                android:layout_marginLeft="30dp"/>
+                <TextView
+                    android:id="@+id/nameSet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name: "
+                    android:layout_marginLeft="20dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="18sp"
+                    />
 
-            <EditText
-                android:id="@+id/etNumber"
-                android:layout_width="280dp"
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:hint="  Your mobile number"
-                android:layout_below="@+id/etName"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="100dp"
-                />
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
 
+                <TextView
+                    android:id="@+id/mobileText"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="Mobile: "
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="40dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="18sp"
+                    android:drawableLeft="@drawable/ic_phone" />
 
+                <TextView
+                    android:id="@+id/mobileSet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mobile: "
+                    android:layout_marginLeft="20dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="18sp"
+                    />
 
-            <TextView
-                android:id="@+id/txtMail"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:text="Mail ID"
-                android:layout_marginTop="25dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textFontWeight="1"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_below="@+id/etNumber"
-                android:layout_marginLeft="30dp"/>
+            </LinearLayout>
 
-
-            <EditText
-                android:id="@+id/etMail"
-                android:layout_width="280dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:hint="  Your mail"
-                android:layout_below="@+id/etNumber"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="100dp"
-                />
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
 
+                <TextView
+                    android:id="@+id/mailText"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="Mail: "
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="40dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="18sp"
+                    android:drawableLeft="@drawable/ic_mail" />
 
+                <TextView
+                    android:id="@+id/mailSet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mail: "
+                    android:layout_marginLeft="20dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="18sp"
+                    />
+
+            </LinearLayout>
 
 
             <Button
-                android:id="@+id/update"
-                android:layout_width="wrap_content"
+                android:id="@+id/editBtn"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:text="@string/update_profile"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:onClick="updateProfile"
+                android:text="Edit Profile"
+                android:layout_gravity="center"
+                android:onClick="editProfile"
+                android:background="@drawable/custom_border2"
                 android:layout_below="@+id/etMail"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="120dp"
                 />
-
 
             <Button
-                android:id="@+id/logout"
-                android:layout_width="wrap_content"
+                android:id="@+id/logOut"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:text="LogOut"
-                android:textStyle="bold"
-                android:gravity="center"
+                android:text="Log Out"
+                android:layout_gravity="center"
                 android:onClick="logOut"
-                android:layout_below="@+id/update"
+                android:background="@drawable/custom_border2"
+                android:layout_below="@+id/etMail"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 />
 
-            <TextView
-                android:id="@+id/txt2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Reset password?"
-                android:layout_marginTop="20dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textFontWeight="1"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_below="@+id/logout"
-                android:layout_marginStart="30dp"
-                android:layout_alignParentEnd="true"
-                android:onClick="resetPswd"
-                android:clickable="true"
-                android:focusable="true" />
+        </LinearLayout>
 
-        </RelativeLayout>
+
     </ScrollView>
-</RelativeLayout>
+
+
+</LinearLayout>
