@@ -50,7 +50,7 @@ public class PassengerActivity extends AppCompatActivity {
         rb1 = findViewById(R.id.radioBike);
         rb2 = findViewById(R.id.radioCar);
         t4 = findViewById(R.id.passengerheading);
-//        t5 = findViewById(R.id.passengerNumberText);
+       // t5 = findViewById(R.id.passengerNumberText);
         e3 = findViewById(R.id.passengerNumberEdit);
         b1 = findViewById(R.id.btnSearchRide);
 
@@ -62,11 +62,11 @@ public class PassengerActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 switch (i) {
                     case R.id.radioBike:
-                        t5.setVisibility(View.GONE);
+                      //  t5.setVisibility(View.GONE);
                         e3.setVisibility(View.GONE);
                         break;
                     case R.id.radioCar:
-                        t5.setVisibility(View.VISIBLE);
+                      //  t5.setVisibility(View.VISIBLE);
                         e3.setVisibility(View.VISIBLE);
                         break;
                 }

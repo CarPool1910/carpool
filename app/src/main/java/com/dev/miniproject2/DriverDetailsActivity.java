@@ -32,7 +32,6 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 
 public class DriverDetailsActivity extends AppCompatActivity {
-
     FirebaseFirestore firestore, firestore2;
     RecyclerView driverRV;
     FirebaseAuth auth;
