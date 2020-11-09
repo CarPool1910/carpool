@@ -107,7 +107,7 @@ public class SelectionActivity extends AppCompatActivity {
                         startActivity(new Intent(SelectionActivity.this, AboutActivity.class));
                         finish();
                         break;
-                    case R.id.idShare:
+                    case R.id.idShare:                                      //need to fix
                         Intent shareIntent = new Intent(Intent.ACTION_SEND);
                         shareIntent.setType("text/plain");
                         Intent chooser2 = Intent.createChooser(shareIntent, "Share via: ");

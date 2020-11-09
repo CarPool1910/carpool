@@ -92,17 +92,40 @@ public class DriverDetailsActivity extends AppCompatActivity {
                             || passengerDest.equalsIgnoreCase(model.getStop4()) || passengerDest.equalsIgnoreCase(model.getDestination())) {
 
                         holder.cardView.setVisibility(View.VISIBLE);
+                        holder.noDrivers.setVisibility(View.GONE);
 
                         Log.d("Passenger", "onBindViewHolder: " + passengerSource + passengerDest);
+
+                        if (model.getStop1() == "") {
+                            holder.Dstop1.setVisibility(View.GONE);
+                        } else {
+                            holder.Dstop1.setText("Stop 1: " + model.getStop1());
+                        }
+
+                        if (model.getStop2() == "") {
+                            holder.Dstop2.setVisibility(View.GONE);
+                        } else {
+                            holder.Dstop2.setText("Stop 2: " + model.getStop2());
+                        }
+
+                        if (model.getStop3() == "") {
+                            holder.Dstop3.setVisibility(View.GONE);
+                        } else {
+                            holder.Dstop3.setText("Stop 3: " + model.getStop3());
+                        }
+
+                        if (model.getStop4() == "") {
+                            holder.Dstop4.setVisibility(View.GONE);
+                        } else {
+                            holder.Dstop4.setText("Stop 4: " + model.getStop4());
+                        }
+
 
                         holder.Dname.setText("Name:" + model.getName());
                         holder.Dsource.setText("Source:" + model.getSource());
                         holder.Ddestination.setText("Destination:" + model.getDestination());
                         holder.Dfare.setText("Fare:" + model.getFare());
-                        holder.Dstop1.setText("Stop 1: " + model.getStop1());
-                        holder.Dstop2.setText("Stop 2: " + model.getStop2());
-                        holder.Dstop3.setText("Stop 3: " + model.getStop3());
-                        holder.Dstop4.setText("Stop 4: " + model.getStop4());
+
 
                         holder.Dcall.setOnClickListener(new View.OnClickListener() {
                             @Override

@@ -49,6 +49,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
 
+
         //TextViews
         tempText = findViewById(R.id.tempText);
         nameText = findViewById(R.id.nameText);

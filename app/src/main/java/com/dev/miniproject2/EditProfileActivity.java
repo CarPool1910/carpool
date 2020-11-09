@@ -252,6 +252,7 @@ public class EditProfileActivity extends AppCompatActivity {
             updateDetails.update("mobile", mobile);
             updateDetails.update("mail", mail);
             Toast.makeText(EditProfileActivity.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
+
         } catch (Exception updateException) {
             Log.d("updateProfile: ", "Exception: " + updateException.getMessage());
             Toast.makeText(EditProfileActivity.this, "Error in updating profile, please try again later", Toast.LENGTH_SHORT).show();
