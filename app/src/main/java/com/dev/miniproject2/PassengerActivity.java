@@ -2,6 +2,7 @@ package com.dev.miniproject2;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,7 +30,7 @@ public class PassengerActivity extends AppCompatActivity {
     TextInputEditText e1, e2, e3;
     RadioGroup rg;
     RadioButton rb1, rb2;
-    Button b1;
+    CardView b1;
     String source, destination, vehicle, passengers;
     FirebaseAuth auth;
     FirebaseFirestore firestore;
