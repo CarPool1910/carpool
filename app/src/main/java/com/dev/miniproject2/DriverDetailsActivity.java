@@ -146,7 +146,6 @@ public class DriverDetailsActivity extends AppCompatActivity {
                     if (position == 0) {
                         holder.noDrivers.setVisibility(View.VISIBLE);
                     }
-
                 }
             }
 

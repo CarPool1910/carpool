@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -25,7 +26,7 @@ import java.util.Map;
 
 public class PassengerActivity extends AppCompatActivity {
     TextView t1, t2, t3, t4, t5;
-    EditText e1, e2, e3;
+    TextInputEditText e1, e2, e3;
     RadioGroup rg;
     RadioButton rb1, rb2;
     Button b1;
@@ -39,16 +40,16 @@ public class PassengerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_passenger);
 
-        t1 = findViewById(R.id.sourceText);
+//        t1 = findViewById(R.id.sourceText);
         e1 = findViewById(R.id.sourceEdit);
-        t2 = findViewById(R.id.destinationText);
+//        t2 = findViewById(R.id.destinationText);
         e2 = findViewById(R.id.destianationEdit);
         t3 = findViewById(R.id.vehicleText);
         rg = findViewById(R.id.vehicleRadioGrp);
         rb1 = findViewById(R.id.radioBike);
         rb2 = findViewById(R.id.radioCar);
         t4 = findViewById(R.id.passengerheading);
-        t5 = findViewById(R.id.passengerNumberText);
+//        t5 = findViewById(R.id.passengerNumberText);
         e3 = findViewById(R.id.passengerNumberEdit);
         b1 = findViewById(R.id.btnSearchRide);
 
