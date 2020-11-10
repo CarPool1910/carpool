@@ -3,6 +3,7 @@ package com.dev.miniproject2;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -30,7 +31,7 @@ import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 public class ProfileActivity extends AppCompatActivity {
-    Button  edit, tempBtn;
+    CardView edit, tempBtn;
     FirebaseAuth auth;
     StorageReference storage;
     FirebaseFirestore firestore;
@@ -59,7 +60,7 @@ public class ProfileActivity extends AppCompatActivity {
         mailText = findViewById(R.id.mailText);
         mailSet = findViewById(R.id.mailSet);
 
-        //Buttons
+        //CardView
         tempBtn = findViewById(R.id.tempBtn);
         edit = findViewById(R.id.editBtn);
 

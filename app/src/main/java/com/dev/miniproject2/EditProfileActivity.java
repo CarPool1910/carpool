@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -37,7 +38,8 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 public class EditProfileActivity extends AppCompatActivity {
-    Button logout, update, tempBtn;
+    Button logout, tempBtn;
+    CardView update;
     FirebaseAuth auth;
     StorageReference storage;
     FirebaseFirestore firestore;

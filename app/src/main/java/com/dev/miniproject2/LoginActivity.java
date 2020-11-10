@@ -3,6 +3,7 @@ package com.dev.miniproject2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
 
     TextView txt1, txt2, txtMail, txtPs, txt3;
     EditText etMail, etPs;
-    Button btnRegister;
+    CardView btnRegister;
     FirebaseAuth auth;
     String mail, pswd;
 

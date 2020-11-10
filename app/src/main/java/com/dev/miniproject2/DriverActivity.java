@@ -2,6 +2,7 @@ package com.dev.miniproject2;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,7 +38,7 @@ public class DriverActivity extends AppCompatActivity {
     EditText e3;
     RadioGroup radioGroup;
     RadioButton rb1, rb2;
-    Button btnSearch;
+    CardView btnSearch;
     String name, mobile, source, destination, vehicle = "", fare;
     String userId;
     String passengers;

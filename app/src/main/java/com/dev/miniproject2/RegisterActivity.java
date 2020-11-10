@@ -2,6 +2,7 @@ package com.dev.miniproject2;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     TextView txt1, txt2, txtName, txtMail, txtNumber, txtPs, txtPs2;
     EditText etName, etMail, etNumber, etPs, etPs2;
-    Button btnRegister;
+    CardView btnRegister;
     FirebaseAuth auth;
     FirebaseFirestore firestore;
     String userID;

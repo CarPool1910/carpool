@@ -182,7 +182,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/btnSearchRide"
                 android:layout_width="300dp"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="80dp"
                 app:cardCornerRadius="25dp"

@@ -27,33 +27,32 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             />
 
-        <Button
+
+
+        <androidx.cardview.widget.CardView
             android:id="@+id/tempBtn"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_gravity="center"
-            android:layout_marginTop="100dp"
-            android:background="@drawable/custom_border2"
-            android:textColor="@android:color/black"
+            android:layout_marginTop="80dp"
+            app:cardCornerRadius="25dp"
             android:elevation="10dp"
-            android:onClick="verifyMail"
-            android:text="Verify Now"
-            android:tooltipText="Click to Register" />
+            app:cardBackgroundColor="@color/colorAccent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:text="Search Ride"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:clickable="true">
+
+            </androidx.appcompat.widget.AppCompatTextView>
 
 
-        <Button
-            android:id="@+id/tempBtn2"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/custom_border2"
-            android:text="Logout"
-            android:elevation="10dp"
-            android:layout_margin="10dp"
-            android:onClick="logOut"
-            android:clickable="true"
-            />
-
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 
 
@@ -173,19 +172,31 @@
 
             </LinearLayout>
 
-
-            <Button
+            <androidx.cardview.widget.CardView
                 android:id="@+id/editBtn"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:text="Edit Profile"
+                android:layout_height="50dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="80dp"
+                app:cardCornerRadius="25dp"
+                android:elevation="10dp"
                 android:onClick="editProfile"
-                android:background="@drawable/custom_border2"
-                android:layout_below="@+id/etMail"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="150dp"
-                />
+                app:cardBackgroundColor="@color/colorAccent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:text="Edit Profile"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:clickable="true">
+
+                </androidx.appcompat.widget.AppCompatTextView>
+
+
+            </androidx.cardview.widget.CardView>
 
 <!--            <Button-->
 <!--                android:id="@+id/logOut"-->
