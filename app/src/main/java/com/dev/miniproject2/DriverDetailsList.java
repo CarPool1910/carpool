@@ -3,10 +3,12 @@ package com.dev.miniproject2;
 public class DriverDetailsList {
 
 
-    String Mobile,Name,Source,Destination,Fare, Stop1, Stop2, Stop3, Stop4;
+    String Mobile,Name,Source,Destination,Fare, Stop1, Stop2, Stop3, Stop4, Vehicle, ID;
+    Long CurrentHour;
 
 
-    public DriverDetailsList(String mobile, String name, String source, String stop1, String stop2, String stop3, String stop4, String destination, String fare) {
+
+    public DriverDetailsList(String mobile, String name, String source, String stop1, String stop2, String stop3, String stop4, String destination, String fare, String vehicle, Long currentHour, String id) {
         Mobile=mobile;
         Name=name;
         Source = source;
@@ -16,6 +18,9 @@ public class DriverDetailsList {
         Stop2 = stop2;
         Stop3 = stop3;
         Stop4 = stop4;
+        Vehicle = vehicle;
+        CurrentHour = currentHour;
+        ID = id;
     }
 
     public DriverDetailsList() {
@@ -90,5 +95,27 @@ public class DriverDetailsList {
         Stop4 = stop4;
     }
 
+    public String getVehicle() {
+        return Vehicle;
+    }
 
+    public void setVehicle(String vehicle) {
+        Vehicle = vehicle;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    public Long getCurrentHour() {
+        return CurrentHour;
+    }
+
+    public void setCurrentHour(Long currentHour) {
+        CurrentHour = currentHour;
+    }
 }

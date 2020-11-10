@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,6 +44,8 @@ public class DriverActivity extends AppCompatActivity {
     String userId;
     String passengers;
     String stop1, stop2, stop3, stop4;
+    Long currentHour;
+    Calendar time;
     //    Spinner s1;
     FirebaseAuth auth;
     FirebaseFirestore firestore;
@@ -88,6 +91,8 @@ public class DriverActivity extends AppCompatActivity {
         rb1 = findViewById(R.id.radioBike);
         rb2 = findViewById(R.id.radioCar);
 
+        //time
+        time = Calendar.getInstance();
 
         btnSearch = findViewById(R.id.btnSearch);
 //        btnSearch.setEnabled(false);
@@ -190,6 +195,7 @@ public class DriverActivity extends AppCompatActivity {
 //                        }
 //                    });
 
+                    currentHour = Long.valueOf(time.get(Calendar.HOUR_OF_DAY));
 
                     userId = auth.getCurrentUser().getUid();
                     DocumentReference dr = firestore.collection("Drivers").document(userId);
@@ -205,6 +211,8 @@ public class DriverActivity extends AppCompatActivity {
                     user.put("Vehicle", vehicle);
                     user.put("Passengers", passengers);
                     user.put("Fare", fare);
+                    user.put("Time", currentHour);
+                    user.put("ID", userId);
 
                     dr.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override

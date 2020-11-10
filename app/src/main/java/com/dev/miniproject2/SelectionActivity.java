@@ -1,6 +1,7 @@
 package com.dev.miniproject2;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -19,6 +20,13 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+
+import java.util.Calendar;
 
 public class SelectionActivity extends AppCompatActivity {
 
@@ -29,6 +37,11 @@ public class SelectionActivity extends AppCompatActivity {
     NavigationView navigationView;
     Toolbar toolbar;
     FirebaseAuth auth;
+    FirebaseFirestore firestore;
+    String userID;
+    Calendar time;
+    Long currentHour;
+    Long finalHour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +57,15 @@ public class SelectionActivity extends AppCompatActivity {
         t2 = findViewById(R.id.drivePoolText);
 
         auth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
+        userID = auth.getCurrentUser().getUid();
 
         navigationView = findViewById(R.id.navigationDrawer);
         drawerLayout = findViewById(R.id.drawerLayout);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        time = Calendar.getInstance();
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.app_name);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);

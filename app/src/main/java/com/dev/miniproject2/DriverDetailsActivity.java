@@ -31,12 +31,16 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 
+import java.util.Calendar;
+
 public class DriverDetailsActivity extends AppCompatActivity {
     FirebaseFirestore firestore, firestore2;
     RecyclerView driverRV;
     FirebaseAuth auth;
-    String passengerID, passengerSource, passengerDest;
+    String passengerID, passengerSource, passengerDest, passengerVehicle;
     FirestoreRecyclerAdapter adapter;
+    Calendar time;
+    Long currentHour, finalHour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,9 @@ public class DriverDetailsActivity extends AppCompatActivity {
 
         firestore = FirebaseFirestore.getInstance();
         firestore2 = FirebaseFirestore.getInstance();
+
+
+        time = Calendar.getInstance();
 
         driverRV = findViewById(R.id.driverList);
         auth = FirebaseAuth.getInstance();
@@ -57,6 +64,8 @@ public class DriverDetailsActivity extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                 passengerSource = value.getString("Source");
                 passengerDest = value.getString("Destination");
+                passengerVehicle = value.getString("Vehicle");
+                //currentHour = value.getLong("Time");
                 Log.d("Passenger", "onEvent: " + passengerSource + passengerDest);
             }
         });
@@ -82,68 +91,81 @@ public class DriverDetailsActivity extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull DriverViewHolder holder, int position, @NonNull final DriverDetailsList model) {
-                Log.d("COUNT", "onCreateViewHolder: " + position);
+                Log.d("COUNT", "onBindViewHolder: " + position);
 
 
-                if (passengerSource.equalsIgnoreCase(model.getSource()) || passengerSource.equalsIgnoreCase(model.getStop1()) || passengerSource.equalsIgnoreCase(model.getStop2()) || passengerSource.equals(model.getStop3())
-                        || passengerSource.equalsIgnoreCase(model.getStop4()) || passengerSource.equalsIgnoreCase(model.getDestination())) {
-                    if (passengerDest.equalsIgnoreCase(model.getStop1()) || passengerDest.equalsIgnoreCase(model.getStop2()) || passengerDest.equalsIgnoreCase(model.getStop3())
-                            || passengerDest.equalsIgnoreCase(model.getStop4()) || passengerDest.equalsIgnoreCase(model.getDestination())) {
+                if (model.getSource().length() != 0 && model.getDestination().length() != 0) {
+                    if (passengerSource.equalsIgnoreCase(model.getSource()) || passengerSource.equalsIgnoreCase(model.getStop1()) || passengerSource.equalsIgnoreCase(model.getStop2()) || passengerSource.equals(model.getStop3())
+                            || passengerSource.equalsIgnoreCase(model.getStop4()) || passengerSource.equalsIgnoreCase(model.getDestination())) {
+                        if (passengerDest.equalsIgnoreCase(model.getStop1()) || passengerDest.equalsIgnoreCase(model.getStop2()) || passengerDest.equalsIgnoreCase(model.getStop3())
+                                || passengerDest.equalsIgnoreCase(model.getStop4()) || passengerDest.equalsIgnoreCase(model.getDestination())) {
 
-                        holder.cardView.setVisibility(View.VISIBLE);
-                        holder.noDrivers.setVisibility(View.GONE);
+                                holder.cardView.setVisibility(View.VISIBLE);
+                                holder.noDrivers.setVisibility(View.GONE);
+//                                currentHour = model.getCurrentHour();
+//                                finalHour = Long.valueOf(time.get(Calendar.HOUR_OF_DAY));
+//                                Long hour = currentHour+4;
+//
+//                                if (finalHour < hour) {
 
-                        Log.d("Passenger", "onBindViewHolder: " + passengerSource + passengerDest);
+                                    Log.d("Passenger", "onBindViewHolder: " + passengerSource + passengerDest);
 
-                        if (model.getStop1() == "") {
-                            holder.Dstop1.setVisibility(View.GONE);
-                        } else {
-                            holder.Dstop1.setText("Stop 1: " + model.getStop1());
+                                    if (model.getStop1() == "") {
+                                        holder.Dstop1.setVisibility(View.GONE);
+                                    } else {
+                                        holder.Dstop1.setText("Stop 1: " + model.getStop1());
+                                    }
+
+                                    if (model.getStop2() == "") {
+                                        holder.Dstop2.setVisibility(View.GONE);
+                                    } else {
+                                        holder.Dstop2.setText("Stop 2: " + model.getStop2());
+                                    }
+
+                                    if (model.getStop3() == "") {
+                                        holder.Dstop3.setVisibility(View.GONE);
+                                    } else {
+                                        holder.Dstop3.setText("Stop 3: " + model.getStop3());
+                                    }
+
+                                    if (model.getStop4() == "") {
+                                        holder.Dstop4.setVisibility(View.GONE);
+                                    } else {
+                                        holder.Dstop4.setText("Stop 4: " + model.getStop4());
+                                    }
+
+
+                                    holder.Dname.setText("Name:" + model.getName());
+                                    holder.Dsource.setText("Source:" + model.getSource());
+                                    holder.Ddestination.setText("Destination:" + model.getDestination());
+                                    holder.Dfare.setText("Fare:" + model.getFare());
+
+
+                                    holder.Dcall.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            Intent i = new Intent(Intent.ACTION_CALL);
+                                            i.setData(Uri.parse("tel:" + model.getMobile()));
+                                            if (ActivityCompat.checkSelfPermission(DriverDetailsActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                                                Toast.makeText(DriverDetailsActivity.this, "Please Grant the Permission", Toast.LENGTH_SHORT).show();
+                                                requestPermission();
+                                            } else {
+                                                startActivity(i);
+                                            }
+                                        }
+                                    });
+//                                }
+//                                else{
+//                                    firestore.collection("Drivers").document(model.getID()).delete();
+//                                }
+
                         }
-
-                        if (model.getStop2() == "") {
-                            holder.Dstop2.setVisibility(View.GONE);
-                        } else {
-                            holder.Dstop2.setText("Stop 2: " + model.getStop2());
-                        }
-
-                        if (model.getStop3() == "") {
-                            holder.Dstop3.setVisibility(View.GONE);
-                        } else {
-                            holder.Dstop3.setText("Stop 3: " + model.getStop3());
-                        }
-
-                        if (model.getStop4() == "") {
-                            holder.Dstop4.setVisibility(View.GONE);
-                        } else {
-                            holder.Dstop4.setText("Stop 4: " + model.getStop4());
-                        }
-
-
-                        holder.Dname.setText("Name:" + model.getName());
-                        holder.Dsource.setText("Source:" + model.getSource());
-                        holder.Ddestination.setText("Destination:" + model.getDestination());
-                        holder.Dfare.setText("Fare:" + model.getFare());
-
-
-                        holder.Dcall.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                Intent i = new Intent(Intent.ACTION_CALL);
-                                i.setData(Uri.parse("tel:" + model.getMobile()));
-                                if (ActivityCompat.checkSelfPermission(DriverDetailsActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                                    Toast.makeText(DriverDetailsActivity.this, "Please Grant the Permission", Toast.LENGTH_SHORT).show();
-                                    requestPermission();
-                                } else {
-                                    startActivity(i);
-                                }
-                            }
-                        });
                     }
-                } else {
-                    holder.cardView.setVisibility(View.GONE);
-                    if (position == 0) {
-                        holder.noDrivers.setVisibility(View.VISIBLE);
+                    else {
+                        holder.cardView.setVisibility(View.GONE);
+                        if (position == 0) {
+                            holder.noDrivers.setVisibility(View.VISIBLE);
+                        }
                     }
                 }
             }
@@ -197,3 +219,6 @@ public class DriverDetailsActivity extends AppCompatActivity {
         adapter.stopListening();
     }
 }
+
+
+

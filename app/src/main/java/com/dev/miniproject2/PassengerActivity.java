@@ -82,20 +82,20 @@ public class PassengerActivity extends AppCompatActivity {
 
                 RadioButton vehiclebtn = (RadioButton) findViewById(rg.getCheckedRadioButtonId());
                 vehicle = vehiclebtn.getText().toString();
-
-                rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                        switch (i) {
-                            case R.id.radioBike:
-                                vehicle = "Bike";
-                                break;
-                            case R.id.radioCar:
-                                vehicle = "Car";
-                                break;
-                        }
-                    }
-                });
+//
+//                rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//                    @Override
+//                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+//                        switch (i) {
+//                            case R.id.radioBike:
+//                                vehicle = "Bike";
+//                                break;
+//                            case R.id.radioCar:
+//                                vehicle = "Car";
+//                                break;
+//                        }
+//                    }
+//                });
 
                 if (TextUtils.isEmpty(source)) {
                     e1.setError("Please Enter Source");
