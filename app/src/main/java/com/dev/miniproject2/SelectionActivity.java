@@ -40,8 +40,8 @@ public class SelectionActivity extends AppCompatActivity {
     FirebaseFirestore firestore;
     String userID;
     Calendar time;
-    Long currentHour;
-    Long finalHour;
+    int currentHour;
+    int finalHour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,9 +129,6 @@ public class SelectionActivity extends AppCompatActivity {
                         shareIntent.setType("text/plain");
                         Intent chooser2 = Intent.createChooser(shareIntent, "Share via: ");
                         startActivity(chooser2);
-                        break;
-                    case R.id.idSettings:
-                        Toast.makeText(SelectionActivity.this, "Settings are not yet finalised", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.idLogOut:
                         auth.signOut();

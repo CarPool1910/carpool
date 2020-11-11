@@ -2,6 +2,7 @@ package com.dev.miniproject2;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,11 +25,11 @@ public class RideActivity extends AppCompatActivity {
 
     TextView t1, t3, t5, t7, t9, t11, t13;
     TextView t2, t4, t6, t8, t10, t12, t14;
-    Button finishride;
+    CardView finishride;
     FirebaseAuth auth;
     FirebaseFirestore firestore;
     String userId;
-    RelativeLayout Ride1;
+    LinearLayout Ride1;
     LinearLayout Ride2;
 
     @Override
@@ -82,11 +83,38 @@ public class RideActivity extends AppCompatActivity {
                 try {
                     t2.setText(value.getString("Source"));
                     t4.setText(value.getString("Destination"));
-                    t6.setText(value.getString("Stop1"));
-                    t8.setText(value.getString("Stop2"));
-                    t10.setText(value.getString("Stop3"));
-                    t12.setText(value.getString("Stop4"));
                     t14.setText(value.getString("Fare"));
+
+                    if(value.getString("Stop1") == ""){
+                        t6.setVisibility(View.GONE);
+                        t5.setVisibility(View.GONE);
+                    }else{
+                        t6.setText(value.getString("Stop1"));
+                    }
+
+                    if(value.getString("Stop2") == ""){
+                        t7.setVisibility(View.GONE);
+                        t8.setVisibility(View.GONE);
+                    }else{
+                        t8.setText(value.getString("Stop2"));
+                    }
+
+                    if(value.getString("Stop3") == ""){
+                        t9.setVisibility(View.GONE);
+                        t10.setVisibility(View.GONE);
+                    }else{
+                        t10.setText(value.getString("Stop3"));
+                    }
+
+                    if(value.getString("Stop4") == ""){
+                        t11.setVisibility(View.GONE);
+                        t12.setVisibility(View.GONE);
+                    }else{
+                        t12.setText(value.getString("Stop4"));
+                    }
+
+
+
 
                     if (t2.getText().toString().length() != 0) {
                         Ride1.setVisibility(View.VISIBLE);

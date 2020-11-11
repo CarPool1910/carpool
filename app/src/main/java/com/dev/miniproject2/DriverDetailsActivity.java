@@ -34,13 +34,16 @@ import com.google.firebase.firestore.Query;
 import java.util.Calendar;
 
 public class DriverDetailsActivity extends AppCompatActivity {
-    FirebaseFirestore firestore, firestore2;
+    FirebaseFirestore firestore, firestore2, firestore3;
     RecyclerView driverRV;
-    FirebaseAuth auth;
+    FirebaseAuth auth, auth2;
     String passengerID, passengerSource, passengerDest, passengerVehicle;
     FirestoreRecyclerAdapter adapter;
     Calendar time;
-    Long currentHour, finalHour;
+
+            int currentHour ;
+    String driverID;
+    Long driverTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +52,15 @@ public class DriverDetailsActivity extends AppCompatActivity {
 
         firestore = FirebaseFirestore.getInstance();
         firestore2 = FirebaseFirestore.getInstance();
+        firestore3 = FirebaseFirestore.getInstance();
 
 
         time = Calendar.getInstance();
 
         driverRV = findViewById(R.id.driverList);
         auth = FirebaseAuth.getInstance();
+        auth2 = FirebaseAuth.getInstance();
+
         passengerID = auth.getCurrentUser().getUid();
 
         //Passenger Details
@@ -65,11 +71,12 @@ public class DriverDetailsActivity extends AppCompatActivity {
                 passengerSource = value.getString("Source");
                 passengerDest = value.getString("Destination");
                 passengerVehicle = value.getString("Vehicle");
-                //currentHour = value.getLong("Time");
+//                currentHour = value.getLong("Time").intValue();
                 Log.d("Passenger", "onEvent: " + passengerSource + passengerDest);
             }
         });
 
+        //int money = snapshot.getLong("money").intValue();
         //Query
         Query query = firestore.collection("Drivers");
 //        Log.d("Mobile", " "+MobileNo);
@@ -91,7 +98,6 @@ public class DriverDetailsActivity extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull DriverViewHolder holder, int position, @NonNull final DriverDetailsList model) {
-                Log.d("COUNT", "onBindViewHolder: " + position);
 
 
                 if (model.getSource().length() != 0 && model.getDestination().length() != 0) {
@@ -100,68 +106,60 @@ public class DriverDetailsActivity extends AppCompatActivity {
                         if (passengerDest.equalsIgnoreCase(model.getStop1()) || passengerDest.equalsIgnoreCase(model.getStop2()) || passengerDest.equalsIgnoreCase(model.getStop3())
                                 || passengerDest.equalsIgnoreCase(model.getStop4()) || passengerDest.equalsIgnoreCase(model.getDestination())) {
 
+
                                 holder.cardView.setVisibility(View.VISIBLE);
                                 holder.noDrivers.setVisibility(View.GONE);
-//                                currentHour = model.getCurrentHour();
-//                                finalHour = Long.valueOf(time.get(Calendar.HOUR_OF_DAY));
-//                                Long hour = currentHour+4;
-//
-//                                if (finalHour < hour) {
 
-                                    Log.d("Passenger", "onBindViewHolder: " + passengerSource + passengerDest);
+                                Log.d("Passenger", "onBindViewHolder: " + passengerSource + passengerDest);
 
-                                    if (model.getStop1() == "") {
-                                        holder.Dstop1.setVisibility(View.GONE);
-                                    } else {
-                                        holder.Dstop1.setText("Stop 1: " + model.getStop1());
-                                    }
+                                if (model.getStop1() == "") {
+                                    holder.Dstop1.setVisibility(View.GONE);
+                                } else {
+                                    holder.Dstop1.setText("Stop 1: " + model.getStop1());
+                                }
 
-                                    if (model.getStop2() == "") {
-                                        holder.Dstop2.setVisibility(View.GONE);
-                                    } else {
-                                        holder.Dstop2.setText("Stop 2: " + model.getStop2());
-                                    }
+                                if (model.getStop2() == "") {
+                                    holder.Dstop2.setVisibility(View.GONE);
+                                } else {
+                                    holder.Dstop2.setText("Stop 2: " + model.getStop2());
+                                }
 
-                                    if (model.getStop3() == "") {
-                                        holder.Dstop3.setVisibility(View.GONE);
-                                    } else {
-                                        holder.Dstop3.setText("Stop 3: " + model.getStop3());
-                                    }
+                                if (model.getStop3() == "") {
+                                    holder.Dstop3.setVisibility(View.GONE);
+                                } else {
+                                    holder.Dstop3.setText("Stop 3: " + model.getStop3());
+                                }
 
-                                    if (model.getStop4() == "") {
-                                        holder.Dstop4.setVisibility(View.GONE);
-                                    } else {
-                                        holder.Dstop4.setText("Stop 4: " + model.getStop4());
-                                    }
+                                if (model.getStop4() == "") {
+                                    holder.Dstop4.setVisibility(View.GONE);
+                                } else {
+                                    holder.Dstop4.setText("Stop 4: " + model.getStop4());
+                                }
 
 
-                                    holder.Dname.setText("Name:" + model.getName());
-                                    holder.Dsource.setText("Source:" + model.getSource());
-                                    holder.Ddestination.setText("Destination:" + model.getDestination());
-                                    holder.Dfare.setText("Fare:" + model.getFare());
+                                holder.Dname.setText("Name:" + model.getName());
+                                holder.Dsource.setText("Source:" + model.getSource());
+                                holder.Ddestination.setText("Destination:" + model.getDestination());
+                                holder.Dfare.setText("Fare:" + model.getFare());
 
 
-                                    holder.Dcall.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View view) {
-                                            Intent i = new Intent(Intent.ACTION_CALL);
-                                            i.setData(Uri.parse("tel:" + model.getMobile()));
-                                            if (ActivityCompat.checkSelfPermission(DriverDetailsActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                                                Toast.makeText(DriverDetailsActivity.this, "Please Grant the Permission", Toast.LENGTH_SHORT).show();
-                                                requestPermission();
-                                            } else {
-                                                startActivity(i);
-                                            }
+                                holder.Dcall.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        Intent i = new Intent(Intent.ACTION_CALL);
+                                        i.setData(Uri.parse("tel:" + model.getMobile()));
+                                        if (ActivityCompat.checkSelfPermission(DriverDetailsActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                                            Toast.makeText(DriverDetailsActivity.this, "Please Grant the Permission", Toast.LENGTH_SHORT).show();
+                                            requestPermission();
+                                        } else {
+                                            startActivity(i);
                                         }
-                                    });
-//                                }
-//                                else{
-//                                    firestore.collection("Drivers").document(model.getID()).delete();
-//                                }
+                                    }
+                                });
+//
 
                         }
-                    }
-                    else {
+                    } else {
                         holder.cardView.setVisibility(View.GONE);
                         if (position == 0) {
                             holder.noDrivers.setVisibility(View.VISIBLE);

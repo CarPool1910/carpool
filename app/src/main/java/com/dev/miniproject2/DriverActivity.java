@@ -44,7 +44,7 @@ public class DriverActivity extends AppCompatActivity {
     String userId;
     String passengers;
     String stop1, stop2, stop3, stop4;
-    Long currentHour;
+    int currentHour;
     Calendar time;
     //    Spinner s1;
     FirebaseAuth auth;
@@ -121,7 +121,6 @@ public class DriverActivity extends AppCompatActivity {
         stops();
 
 
-//        btnSearch.setEnabled(true);
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,21 +180,6 @@ public class DriverActivity extends AppCompatActivity {
                     //Vehicle Dtermination
                     RadioButton vehiclebtn = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
                     vehicle = vehiclebtn.getText().toString();
-//                    radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//                        @Override
-//                        public void onCheckedChanged(RadioGroup radioGroup, int i) {
-//                            switch (i) {
-//                                case R.id.radioBike:
-//                                    vehicle = "Bike";
-//                                    break;
-//                                case R.id.radioCar:
-//                                    vehicle = "Car";
-//                                    break;
-//                            }
-//                        }
-//                    });
-
-                    currentHour = Long.valueOf(time.get(Calendar.HOUR_OF_DAY));
 
                     userId = auth.getCurrentUser().getUid();
                     DocumentReference dr = firestore.collection("Drivers").document(userId);
@@ -211,7 +195,6 @@ public class DriverActivity extends AppCompatActivity {
                     user.put("Vehicle", vehicle);
                     user.put("Passengers", passengers);
                     user.put("Fare", fare);
-                    user.put("Time", currentHour);
                     user.put("ID", userId);
 
                     dr.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {

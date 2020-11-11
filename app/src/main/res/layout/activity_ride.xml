@@ -6,15 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".RideActivity">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/RideAvailableLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
     <TextView
         android:id="@+id/txtSource"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="30dp"
         android:text="Source:"
         android:layout_marginTop="25dp"
@@ -26,15 +32,22 @@
     <TextView
         android:id="@+id/txtSetSource"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:inputType="text"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:layout_marginTop="30dp"
         android:textSize="16sp"
-        android:layout_marginLeft="100dp" />
+        android:layout_marginLeft="60dp" />
 
-    <TextView
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <TextView
         android:id="@+id/txtDestinatiom"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="30dp"
         android:text="Destination:"
         android:layout_marginTop="25dp"
@@ -47,19 +60,26 @@
     <TextView
         android:id="@+id/txtSetDestination"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:inputType="text"
         android:layout_below="@+id/txtSetSource"
         android:layout_marginTop="25dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+
         android:textSize="16sp"
-        android:layout_marginLeft="140dp"
+        android:layout_marginLeft="60dp"
         />
 
+        </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    <TextView
+        <TextView
         android:id="@+id/txtStop1"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="30dp"
         android:layout_marginTop="25dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -73,17 +93,26 @@
     <TextView
         android:id="@+id/txtSetStop1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:inputType="text"
         android:layout_below="@+id/txtSetDestination"
         android:layout_marginTop="25dp"
         android:textSize="16sp"
-        android:layout_marginLeft="100dp"
+        android:layout_marginLeft="60dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+
         />
 
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
     <TextView
         android:id="@+id/txtStop2"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="30dp"
         android:layout_marginTop="25dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -97,18 +126,25 @@
     <TextView
         android:id="@+id/txtSetStop2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:inputType="text"
         android:layout_below="@+id/txtSetStop1"
         android:layout_marginTop="25dp"
         android:textSize="16sp"
-        android:layout_marginLeft="100dp"
+        android:layout_marginLeft="60dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+
         />
 
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
     <TextView
         android:id="@+id/txtStop3"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="30dp"
         android:layout_marginTop="25dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -122,17 +158,23 @@
     <TextView
         android:id="@+id/txtSetStop3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:inputType="text"
         android:layout_below="@+id/txtSetStop2"
         android:layout_marginTop="25dp"
         android:textSize="16sp"
-        android:layout_marginLeft="100dp"
-        />
+        android:layout_marginLeft="60dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
 
+        />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
     <TextView
         android:id="@+id/txtStop4"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="30dp"
         android:layout_marginTop="25dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -146,17 +188,24 @@
     <TextView
         android:id="@+id/txtSetStop4"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:inputType="text"
         android:layout_below="@+id/txtSetStop3"
         android:layout_marginTop="25dp"
         android:textSize="16sp"
-        android:layout_marginLeft="100dp"
-        />
+        android:layout_marginLeft="60dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
 
+        />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
     <TextView
         android:id="@+id/txtFare"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="30dp"
         android:layout_marginTop="25dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -170,43 +219,64 @@
     <TextView
         android:id="@+id/txtSetFare"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:inputType="number"
         android:layout_below="@+id/txtSetStop4"
         android:layout_marginTop="25dp"
         android:textSize="16sp"
-        android:layout_marginLeft="100dp"
+        android:layout_marginLeft="60dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+
         />
 
-    <Button
-        android:id="@+id/deletebtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtSetFare"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="150dp"
-        android:text="Finish ride" />
+    </LinearLayout>
 
-    </RelativeLayout>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/deletebtn"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="80dp"
+            app:cardCornerRadius="25dp"
+            android:elevation="10dp"
+            app:cardBackgroundColor="@color/colorAccent">
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:text="Finish ride"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:clickable="true">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
 
 
     <LinearLayout
         android:id="@+id/RideNotAvailableLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_below="@id/RideAvailableLayout"
+        android:layout_marginTop="-2dp"
         android:gravity="center"
-        android:visibility="visible"
-        android:layout_below="@id/RideAvailableLayout">
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="No Rides Yet!!"
-            android:textSize="20sp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="20sp" />
 
     </LinearLayout>
 </RelativeLayout>

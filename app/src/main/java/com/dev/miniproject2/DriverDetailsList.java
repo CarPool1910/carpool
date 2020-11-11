@@ -4,11 +4,11 @@ public class DriverDetailsList {
 
 
     String Mobile,Name,Source,Destination,Fare, Stop1, Stop2, Stop3, Stop4, Vehicle, ID;
-    Long CurrentHour;
+    int CurrentHour;
 
 
 
-    public DriverDetailsList(String mobile, String name, String source, String stop1, String stop2, String stop3, String stop4, String destination, String fare, String vehicle, Long currentHour, String id) {
+    public DriverDetailsList(String mobile, String name, String source, String stop1, String stop2, String stop3, String stop4, String destination, String fare, String vehicle,String id) {
         Mobile=mobile;
         Name=name;
         Source = source;
@@ -19,7 +19,6 @@ public class DriverDetailsList {
         Stop3 = stop3;
         Stop4 = stop4;
         Vehicle = vehicle;
-        CurrentHour = currentHour;
         ID = id;
     }
 
@@ -111,11 +110,5 @@ public class DriverDetailsList {
         this.ID = ID;
     }
 
-    public Long getCurrentHour() {
-        return CurrentHour;
-    }
 
-    public void setCurrentHour(Long currentHour) {
-        CurrentHour = currentHour;
-    }
 }
