@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -64,6 +65,9 @@ public class LoginActivity extends AppCompatActivity {
     public void SignIn(View view) {
         mail = etMail.getText().toString();
         pswd = etPs.getText().toString();
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Logging in..");
+        progressDialog.show();
 
         if (mail.length() > 0 && pswd.length() > 6) {
             auth.signInWithEmailAndPassword(mail, pswd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -72,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginActivity.this, SelectionActivity.class)); //MainActivity
+                        progressDialog.dismiss();
                         finish();
                     } else {
                         Toast.makeText(LoginActivity.this, "Error Signing in", Toast.LENGTH_SHORT).show();

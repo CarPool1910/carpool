@@ -18,20 +18,20 @@
             android:orientation="vertical"
             android:padding="10dp">
 
+
             <TextView
                 android:id="@+id/passengerheading"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="50dp"
                 android:text="Passenger Details"
-                android:textStyle="italic"
-                android:textFontWeight="1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textColor="#000000"
+                android:textFontWeight="1"
                 android:textSize="20sp"
-                android:layout_marginBottom="50dp"/>
-
+                android:textStyle="italic" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -44,7 +44,7 @@
                     android:hint="Enter Source" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
+            <!--                android:onClick="driverOptions"-->
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -59,63 +59,19 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
-
-
-<!--            <TextView-->
-<!--                android:id="@+id/sourceText"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Enter Source"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
-<!--                android:textFontWeight="1"-->
-<!--                android:textSize="18sp"-->
-<!--                android:textStyle="bold"-->
-<!--                android:drawableLeft="@drawable/ic_name" />-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/sourceEdit"-->
-<!--                android:layout_width="280dp"-->
-<!--                android:layout_height="35dp"-->
-<!--                android:background="@drawable/custom_border"-->
-<!--                android:inputType="text"-->
-<!--                android:hint="Enter Source Location"-->
-<!--                android:ellipsize="end"-->
-<!--                android:layout_marginBottom="15dp"/>-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/destinationText"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text=" Enter Destination"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
-<!--                android:textFontWeight="1"-->
-<!--                android:textSize="18sp"-->
-<!--                android:textStyle="bold"-->
-<!--                android:drawableLeft="@drawable/ic_phone"/>-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/destianationEdit"-->
-<!--                android:layout_width="280dp"-->
-<!--                android:layout_height="35dp"-->
-<!--                android:background="@drawable/custom_border"-->
-<!--                android:inputType="text"-->
-<!--                android:hint="  Enter Destination Location"-->
-<!--                android:ellipsize="end"-->
-<!--                android:layout_marginBottom="15dp"/>-->
-
             <TextView
                 android:id="@+id/vehicleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" Select Vehicle"
                 android:layout_marginTop="20dp"
+                android:drawableLeft="@drawable/ic_gender"
+                android:text=" Select Vehicle"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textFontWeight="1"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:drawableLeft="@drawable/ic_gender"/>
+                android:textStyle="bold" />
+
+
 
             <RadioGroup
                 android:id="@+id/vehicleRadioGrp"
@@ -132,9 +88,14 @@
                     android:id="@+id/radioCar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Car"/>
+                    android:text="Car" />
 
             </RadioGroup>
+
+
+
+
+
 
 
             <com.google.android.material.textfield.TextInputLayout
@@ -146,37 +107,38 @@
                     android:id="@+id/passengerNumberEdit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter No of Passengers"
                     android:layout_marginTop="15dp"
-                    android:text="1"/>
+                    android:hint="Enter No of Passengers"
+                    android:text="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
+            <!--            <TextView-->
+            <!--                android:id="@+id/passengerNumberText"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="Enter Number of Passengers"-->
+            <!--                android:layout_marginTop="10dp"-->
+            <!--                android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
+            <!--                android:textFontWeight="1"-->
+            <!--                android:textSize="18sp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                android:visibility="gone"-->
+            <!--                android:drawableLeft="@drawable/ic_mail" />-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/passengerNumberText"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Enter Number of Passengers"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
-<!--                android:textFontWeight="1"-->
-<!--                android:textSize="18sp"-->
-<!--                android:textStyle="bold"-->
-<!--                android:visibility="gone"-->
-<!--                android:drawableLeft="@drawable/ic_mail" />-->
+            <!--            <EditText-->
+            <!--                android:id="@+id/passengerNumberEdit"-->
+            <!--                android:layout_width="280dp"-->
+            <!--                android:layout_height="35dp"-->
+            <!--                android:background="@drawable/custom_border"-->
+            <!--                android:inputType="number"-->
+            <!--                android:text="1"-->
+            <!--                android:hint="Enter number of passenger"-->
+            <!--                android:visibility="gone"-->
+            <!--                android:ellipsize="end"/>-->
 
-<!--            <EditText-->
-<!--                android:id="@+id/passengerNumberEdit"-->
-<!--                android:layout_width="280dp"-->
-<!--                android:layout_height="35dp"-->
-<!--                android:background="@drawable/custom_border"-->
-<!--                android:inputType="number"-->
-<!--                android:text="1"-->
-<!--                android:hint="Enter number of passenger"-->
-<!--                android:visibility="gone"-->
-<!--                android:ellipsize="end"/>-->
+
 
 
             <androidx.cardview.widget.CardView
@@ -185,26 +147,27 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="80dp"
-                app:cardCornerRadius="25dp"
                 android:elevation="10dp"
-                app:cardBackgroundColor="@color/colorAccent">
+                android:onClick="searchRide"
+                app:cardBackgroundColor="@color/colorAccent"
+                app:cardCornerRadius="25dp">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="150dp"
                     android:layout_height="match_parent"
-                    android:text="Search Ride"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:gravity="center"
                     android:layout_gravity="center"
-                    android:clickable="true">
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:text="Search Ride"
+                    android:onClick="searchRide"
+
+                    android:textSize="18sp"
+                    android:textStyle="bold">
 
                 </androidx.appcompat.widget.AppCompatTextView>
 
 
             </androidx.cardview.widget.CardView>
-<!--                android:onClick="driverOptions"-->
-
 
 
         </LinearLayout>

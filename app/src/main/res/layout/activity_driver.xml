@@ -330,6 +330,7 @@
                 android:layout_marginTop="80dp"
                 app:cardCornerRadius="25dp"
                 android:elevation="10dp"
+                android:onClick="saveDetails"
                 app:cardBackgroundColor="@color/colorAccent">
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -340,14 +341,11 @@
                     android:textSize="18sp"
                     android:gravity="center"
                     android:layout_gravity="center"
+                    android:onClick="saveDetails"
                     android:clickable="true">
 
                 </androidx.appcompat.widget.AppCompatTextView>
-
-
             </androidx.cardview.widget.CardView>
-
-
 
 
         </LinearLayout>

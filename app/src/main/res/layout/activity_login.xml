@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
@@ -26,30 +25,9 @@
             android:layout_marginBottom="10dp"
             android:text="Log in"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
-<!--        <TextView-->
-<!--            android:id="@+id/txtMail"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:drawableLeft="@drawable/ic_mail"-->
-<!--            android:text=" Mail ID"-->
-<!--            android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
-<!--            android:textFontWeight="1"-->
-<!--            android:textSize="18sp"-->
-<!--            android:textStyle="bold" />-->
-
-<!--        <EditText-->
-<!--            android:id="@+id/etMail"-->
-<!--            android:layout_width="280dp"-->
-<!--            android:layout_height="35dp"-->
-<!--            android:layout_margin="10dp"-->
-<!--            android:background="@drawable/custom_border"-->
-<!--            android:ellipsize="end"-->
-<!--            android:hint="  Enter your mail"-->
-<!--            android:inputType="textEmailAddress" />-->
+            android:textSize="40sp"
+            android:textStyle="bold"
+            />
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -67,28 +45,6 @@
                 android:inputType="textEmailAddress"/>
 
         </com.google.android.material.textfield.TextInputLayout>
-<!--        -->
-<!--        <TextView-->
-<!--            android:id="@+id/txtPass"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:drawableLeft="@drawable/ic_pswd"-->
-<!--            android:text=" Password"-->
-<!--            android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
-<!--            android:textFontWeight="1"-->
-<!--            android:textSize="18sp"-->
-<!--            android:textStyle="bold" />-->
-
-<!--        <EditText-->
-<!--            android:id="@+id/etPs"-->
-<!--            android:layout_width="280dp"-->
-<!--            android:layout_height="35dp"-->
-<!--            android:layout_margin="10dp"-->
-<!--            android:background="@drawable/custom_border"-->
-<!--            android:ellipsize="end"-->
-<!--            android:hint="  Enter your password"-->
-<!--            android:inputType="textPassword" />-->
 <Space
     android:layout_width="match_parent"
     android:layout_height="10dp"/>
@@ -118,7 +74,7 @@
             app:cardCornerRadius="25dp"
             android:onClick="SignIn"
             android:elevation="10dp"
-            app:cardBackgroundColor="@color/colorAccent">
+            app:cardBackgroundColor="@color/colorPrimary">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="150dp"
@@ -126,6 +82,8 @@
                 android:text="Log in"
                 android:textStyle="bold"
                 android:textSize="18sp"
+                android:onClick="SignIn"
+
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:clickable="true">

@@ -191,6 +191,7 @@
                     android:textSize="18sp"
                     android:gravity="center"
                     android:layout_gravity="center"
+                    android:onClick="editProfile"
                     android:clickable="true">
 
                 </androidx.appcompat.widget.AppCompatTextView>

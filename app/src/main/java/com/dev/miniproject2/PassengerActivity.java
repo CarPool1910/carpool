@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -72,67 +73,6 @@ public class PassengerActivity extends AppCompatActivity {
                 }
             }
         });
-
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                source = e1.getText().toString();
-                destination = e2.getText().toString();
-                passengers = e3.getText().toString();
-
-                RadioButton vehiclebtn = (RadioButton) findViewById(rg.getCheckedRadioButtonId());
-                vehicle = vehiclebtn.getText().toString();
-//
-//                rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//                    @Override
-//                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
-//                        switch (i) {
-//                            case R.id.radioBike:
-//                                vehicle = "Bike";
-//                                break;
-//                            case R.id.radioCar:
-//                                vehicle = "Car";
-//                                break;
-//                        }
-//                    }
-//                });
-
-                if (TextUtils.isEmpty(source)) {
-                    e1.setError("Please Enter Source");
-                }
-                if (TextUtils.isEmpty(destination)) {
-                    e2.setError("Please Enter Destination");
-                }
-                if (TextUtils.isEmpty(passengers)) {
-                    e3.setError("Enter Number of Passengers");
-                }
-
-                userId = auth.getCurrentUser().getUid();
-                DocumentReference dr = firestore.collection("passengers").document(userId);
-                Map<String, Object> user = new HashMap<>();
-                user.put("Source", source);
-                user.put("Destination", destination);
-                user.put("Vehicle", vehicle);
-                user.put("Number of Passengers", passengers);
-
-                dr.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-//                    Toast.makeText(Passenger.this,"Details Saved",Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(PassengerActivity.this, DriverDetailsActivity.class);
-                        startActivity(i);
-                        finish();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(PassengerActivity.this, "Invalid Details", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
-
-
     }
 
     @Override
@@ -142,7 +82,51 @@ public class PassengerActivity extends AppCompatActivity {
         finish();
     }
 
-//    public void driverOptions(View view) {
-//        Toast.makeText(getApplicationContext(),"Driver Spotted",Toast.LENGTH_SHORT).show();
-//    }
+    public void searchRide(View view) {
+        source = e1.getText().toString();
+        destination = e2.getText().toString();
+        passengers = e3.getText().toString();
+
+        RadioButton vehiclebtn = (RadioButton) findViewById(rg.getCheckedRadioButtonId());
+        vehicle = vehiclebtn.getText().toString();
+
+        if (TextUtils.isEmpty(source)) {
+            e1.setError("Please Enter Source");
+        }
+        if (TextUtils.isEmpty(destination)) {
+            e2.setError("Please Enter Destination");
+        }
+        if (TextUtils.isEmpty(passengers)) {
+            e3.setError("Enter Number of Passengers");
+        }
+
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Searching driver..");
+        progressDialog.show();
+
+        userId = auth.getCurrentUser().getUid();
+        DocumentReference dr = firestore.collection("passengers").document(userId);
+        Map<String, Object> user = new HashMap<>();
+        user.put("Source", source);
+        user.put("Destination", destination);
+        user.put("Vehicle", vehicle);
+        user.put("Number of Passengers", passengers);
+
+        dr.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+//                    Toast.makeText(Passenger.this,"Details Saved",Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(PassengerActivity.this, DriverDetailsActivity.class);
+                startActivity(i);
+                progressDialog.dismiss();
+                finish();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(PassengerActivity.this, "Invalid Details", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 }

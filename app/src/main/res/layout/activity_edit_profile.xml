@@ -100,6 +100,8 @@
                     android:text="Update Profile"
                     android:textStyle="bold"
                     android:textSize="18sp"
+                    android:onClick="updateProfile"
+
                     android:gravity="center"
                     android:layout_gravity="center"
                     android:clickable="true">

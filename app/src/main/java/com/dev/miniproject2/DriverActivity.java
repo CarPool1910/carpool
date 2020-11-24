@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -121,98 +122,101 @@ public class DriverActivity extends AppCompatActivity {
         stops();
 
 
+    }
 
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                name = te1.getText().toString();
-                mobile = te2.getText().toString();
-                source = e1.getText().toString();
-                destination = e2.getText().toString();
-                passengers = e3.getText().toString();
-                fare = e4.getText().toString();
+    public void saveDetails(View view) {
 
-                //Validation
-                if (TextUtils.isEmpty(name)) {
-                    te1.setError("Please enter Name");
-                } else if (TextUtils.isEmpty(mobile)) {
-                    te2.setError("Please enter mobile No");
-                } else if (TextUtils.isEmpty(source)) {
-                    e1.setError("Please Enter Source");
-                } else if (TextUtils.isEmpty(destination)) {
-                    e2.setError("Please Enter Destination");
-                } else if (TextUtils.isEmpty(passengers)) {
-                    e3.setError("Please Enter Valid Number of Passengers");
-                } else if (TextUtils.isEmpty(fare)) {
-                    e4.setError("Please Enter the Fare");
-                } else {
+        name = te1.getText().toString();
+        mobile = te2.getText().toString();
+        source = e1.getText().toString();
+        destination = e2.getText().toString();
+        passengers = e3.getText().toString();
+        fare = e4.getText().toString();
 
-                    //Taking input from stops
-                    //Stop1
-                    if (inputStop1.getText().length() != 0) {
-                        stop1 = inputStop1.getText().toString();
-                    } else {
-                        stop1 = "";
-                    }
+        //Validation
+        if (TextUtils.isEmpty(name)) {
+            te1.setError("Please enter Name");
+        } else if (TextUtils.isEmpty(mobile)) {
+            te2.setError("Please enter mobile No");
+        } else if (TextUtils.isEmpty(source)) {
+            e1.setError("Please Enter Source");
+        } else if (TextUtils.isEmpty(destination)) {
+            e2.setError("Please Enter Destination");
+        } else if (TextUtils.isEmpty(passengers)) {
+            e3.setError("Please Enter Valid Number of Passengers");
+        } else if (TextUtils.isEmpty(fare)) {
+            e4.setError("Please Enter the Fare");
+        } else {
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage("Saving ride details..");
+            progressDialog.show();
 
-                    //stop2
-                    if (inputStop2.getText().length() != 0) {
-                        stop2 = inputStop2.getText().toString();
-                    } else {
-                        stop2 = "";
-                    }
-
-                    //stop3
-                    if (inputStop3.getText().length() != 0) {
-                        stop3 = inputStop3.getText().toString();
-                    } else {
-                        stop3 = "";
-                    }
-
-                    //stop4
-                    if (inputStop4.getText().length() != 0) {
-                        stop4 = inputStop4.getText().toString();
-                    } else {
-                        stop4 = "";
-                    }
-
-                    //Vehicle Dtermination
-                    RadioButton vehiclebtn = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
-                    vehicle = vehiclebtn.getText().toString();
-
-                    userId = auth.getCurrentUser().getUid();
-                    DocumentReference dr = firestore.collection("Drivers").document(userId);
-                    Map<String, Object> user = new HashMap<>();
-                    user.put("Name", name);
-                    user.put("Mobile", mobile);
-                    user.put("Source", source);
-                    user.put("Stop1", stop1);
-                    user.put("Stop2", stop2);
-                    user.put("Stop3", stop3);
-                    user.put("Stop4", stop4);
-                    user.put("Destination", destination);
-                    user.put("Vehicle", vehicle);
-                    user.put("Passengers", passengers);
-                    user.put("Fare", fare);
-                    user.put("ID", userId);
-
-                    dr.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(DriverActivity.this, "Details Saved", Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(DriverActivity.this, RideActivity.class);
-                            startActivity(i);
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(DriverActivity.this, "Invalid Details", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
+            //Taking input from stops
+            //Stop1
+            if (inputStop1.getText().length() != 0) {
+                stop1 = inputStop1.getText().toString();
+            } else {
+                stop1 = "";
             }
-        });
+
+            //stop2
+            if (inputStop2.getText().length() != 0) {
+                stop2 = inputStop2.getText().toString();
+            } else {
+                stop2 = "";
+            }
+
+            //stop3
+            if (inputStop3.getText().length() != 0) {
+                stop3 = inputStop3.getText().toString();
+            } else {
+                stop3 = "";
+            }
+
+            //stop4
+            if (inputStop4.getText().length() != 0) {
+                stop4 = inputStop4.getText().toString();
+            } else {
+                stop4 = "";
+            }
+
+            //Vehicle Dtermination
+            RadioButton vehiclebtn = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
+            vehicle = vehiclebtn.getText().toString();
+
+            userId = auth.getCurrentUser().getUid();
+            DocumentReference dr = firestore.collection("Drivers").document(userId);
+            Map<String, Object> user = new HashMap<>();
+            user.put("Name", name);
+            user.put("Mobile", mobile);
+            user.put("Source", source);
+            user.put("Stop1", stop1);
+            user.put("Stop2", stop2);
+            user.put("Stop3", stop3);
+            user.put("Stop4", stop4);
+            user.put("Destination", destination);
+            user.put("Vehicle", vehicle);
+            user.put("Passengers", passengers);
+            user.put("Fare", fare);
+            user.put("ID", userId);
+
+            dr.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Toast.makeText(DriverActivity.this, "Details Saved", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(DriverActivity.this, RideActivity.class);
+                    startActivity(i);
+                    progressDialog.dismiss();
+                    finish();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(DriverActivity.this, "Invalid Details", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     private void stops() {
@@ -258,4 +262,5 @@ public class DriverActivity extends AppCompatActivity {
         startActivity(new Intent(DriverActivity.this, SelectionActivity.class));
         finish();
     }
+
 }
